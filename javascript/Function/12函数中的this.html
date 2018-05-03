@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>12函数中的this</title>
+	
+</head>
+<body>
+	<h1>this的指向</h1>
+	<button id="btn">点我</button>
+	<script>
+		/*
+			this:
+				好比一个词，由不同的人说，指代不同的对象
+				A：再说，老子弄死你（指代A）
+				B：来啊，弄死老子啊（指代B）
+
+			函数中的this
+				* 直接调用：指向window
+				* 事件驱动：指向绑定事件的元素
+		 */
+		function show(){
+			// arguments
+			// this
+			// 函数中的this是一个关键字，表示当前对象，而当前对象是谁，取决于谁调用了这个函数
+
+			console.log(this);
+		}
+
+		show();//直接调用：this表示window
+
+		var btn = document.getElementById('btn');
+
+		btn.onclick = show;//事件驱动：this指向绑定事件的元素
+
+
+	</script>
+</body>
+</html>

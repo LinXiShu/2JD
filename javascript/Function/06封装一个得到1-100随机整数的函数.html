@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>封装一个得到1-100随机整数的函数</title>
+	<script>
+		/*
+			封装一个得到一个范围内的随机整数的函数
+				* Math.random();0~1(不包括1)
+		 */
+		
+		parseInt(Math.random()*100+1);//1-100 
+		parseInt(Math.random()*101+100);//100-200
+		parseInt(Math.random()*334+666);//666-999
+
+		// 推导公式：Math.random()*(max-min+1) + min
+
+		function randomNumber(min,max){
+			var r = parseInt(Math.random()*(max-min+1)+min);//
+			console.log(r);
+		}
+
+		randomNumber(1,100);
+		randomNumber(100,200);
+		randomNumber(666,999);
+
+
+		// document.getElementById('box');
+		// console.log(10,20)
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

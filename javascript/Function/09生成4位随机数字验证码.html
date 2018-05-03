@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>编写生成4位数字验证码的函数，并显示在页面，点击重新生成验证码</title>
+	
+</head>
+<body>
+	<h1>随机验证码</h1>
+	<label for="username">用户名：</label>
+	<input type="text" id="username">
+	<label for="password">密码：</label>
+	<input type="password" id="password">
+	<label for="myCode">验证码：</label>
+	<input type="text" id="myCode"><span id="showCode">0000</span>
+	<button id="btn">登录</button>
+
+	<script>
+		/*
+			编写生成4位数字验证码的函数，并显示在页面，点击重新生成验证码
+			 * 1234,2341,1122,1111
+
+
+			 返回值：
+			 	* 函数默认返回值为undefined
+			 	* return 值：返回到函数执行的地方
+		 */
+		
+		var showCode = document.getElementById('showCode');
+		var btn = document.getElementById('btn');
+		var myCode = document.getElementById('myCode');
+
+		btn.onclick = function(){
+			var code = myCode.value;
+
+			if(code != showCode.innerHTML){
+				alert('验证码不正确')
+			}else{
+				alert('恭喜你，登录成功');
+			}
+		}
+
+		// 页面加载生成随机验证码到#showCode
+		showCode.innerHTML = vCode();
+		
+		// 随机验证码
+		function vCode(){
+			// 生成随机4位数
+			var res = parseInt(Math.random()*10000);//542=>0542,54=>0054
+
+			if(res<10){
+				res = '000' + res;
+			}else if(res < 100){
+				res = '00' + res;
+			}else if(res < 1000){
+				res = '0' + res;
+			}
+			// console.log(res);
+
+			return res;
+		}
+
+	</script>
+</body>
+</html>

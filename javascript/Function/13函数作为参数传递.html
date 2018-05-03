@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数作为参数传递</title>
+	<script>
+		console.log('start');
+		/*
+			函数作为参数传递：回掉函数
+
+			断点：暂停代码的执行
+				如何断点：Source=>在需要暂停的位置点击
+				* F10：逐行代码执行
+				* F11：进入函数
+				* F8：从来一次
+		 */
+		function show(a){
+			// 形参就是局部变量
+			//var a = 100;
+			//var a = get
+
+
+			// console.log(a);
+
+			// a是一个函数
+			// 如何执行
+			if(typeof a === 'function'){
+				a('laoxie');
+			}
+			
+		}
+
+
+		//show(100);
+		show(get);
+
+
+		function get(name){
+			console.log(666);
+			console.log(name);//laoxie
+		}
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

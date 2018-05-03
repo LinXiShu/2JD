@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>08封装一个显示隐藏页面元素的函数</title>
+	<style>
+		/*#box{display: block;}*/
+	</style>
+	
+</head>
+<body>
+	<div id="box">
+		<img src="img/g1.jpg">
+	</div>
+	<button id="btn">显示隐藏</button>
+	<script>
+		/*
+			封装一个显示隐藏页面元素的函数
+				* 通过js改变css样式
+		 */
+		
+		var box = document.getElementById('box');
+		var btn = document.getElementById('btn');
+
+		// 创建一个变量，用来保存图片的显示状态
+		var isShow = true;
+
+		// 给按钮添加事件处理函数（绑定事件）
+		btn.onclick = function(){
+			// 如果是显示的状态
+			/*if(isShow){
+				box.style.display = 'none';
+				isShow = false;
+			}else{
+				box.style.display = 'block';
+				isShow = true;
+			}*/
+			box.style.display = isShow ? 'none' : 'block';
+			isShow = !isShow;
+		}
+
+	</script>
+</body>
+</html>

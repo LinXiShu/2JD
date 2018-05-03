@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>14递归</title>
+	<script>
+		/*
+			函数内部调用自己：递归
+				* 死循环：递归函数后面的代码不能执行
+				* 跳出条件
+				*
+			
+			show(5)			console.log(666)	
+				show(4)			console.log(666)
+					show(3)			console.log(666)				
+						show(2)			console.log(666)				
+							show(1)			console.log(666)				
+								show(0)			console.log(666)
+							console.log(999)
+						console.log(999)
+					console.log(999)
+				console.log(999)
+			console.log(999)
+
+		 */
+		function show(num){
+			console.log(666);
+			num--;
+
+			if(num<0){
+				return;
+			}
+
+			show(num);
+
+			console.log(999);
+		}
+
+		// show(5);
+
+
+		/*
+			sum(5)		console.log(5)
+				sum(4)		console.log(4)
+					sum(3)		console.log(3)
+						sum(2)		console.log(2)
+							sum(1)		console.log(1)	return
+						console.log(1)
+					console.log(2)
+				console.log(3)
+			console.log(4);
+
+		 */
+		function sum(num){
+			console.log(num)
+			num--;
+
+			if(num<=0){
+				return;
+			}
+
+			sum(num);
+
+			console.log(num);
+		}
+
+		sum(5);
+
+		sum(3)
+			sum(2)
+			console.log(2);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

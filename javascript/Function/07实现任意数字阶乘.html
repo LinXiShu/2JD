@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>封装一个函数factorial，实现任意数字阶乘的计算</title>
+	
+</head>
+<body>
+	<h1>封装一个函数factorial，实现任意数字阶乘的计算</h1>
+	<input type="text" id="number">
+	<button id="btn">计算阶乘</button>
+	<div id="output"></div>
+	<script>
+		/*
+			封装一个函数factorial，实现任意数字阶乘的计算
+		 */
+		var number = document.getElementById('number');
+		var btn = document.getElementById('btn');
+		var output = document.getElementById('output');
+
+
+		// 给按钮添加事件处理函数（绑定事件）
+		btn.onclick = function(){
+			// 获取输入的数字
+			var num = Number(number.value);
+
+			// 计算阶乘
+			factorial(num);
+		}
+
+		btn.onclick = factorial;
+
+
+		// 专门计算阶乘的函数
+		function factorial(n){
+			// n! = 1*2*3*4*..*n
+			var res = 1;
+
+			for(var i=2;i<=n;i++){//i:2~n
+				res *= i;
+			}
+
+
+			// 把阶乘结果写入页面
+			output.innerHTML = n + '的阶乘：' + res;
+		}
+	</script>
+</body>
+</html>

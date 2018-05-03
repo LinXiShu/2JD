@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>17封装生成随机颜色函数</title>
+	
+</head>
+<body id="mybody">
+	<h1>17封装生成随机颜色函数</h1>
+	<button id="btn">随机颜色</button>
+	<script src="../common.js"></script>
+	<script>
+		function randomColor(){
+			// 随机r,g,b
+			var r = parseInt(Math.random()*256);
+			var g = parseInt(Math.random()*256);
+			var b = parseInt(Math.random()*256);
+
+
+			return 'rgb(' + r + ',' + g + ',' + b + ')';
+		}
+
+		// randomColor();//rgb(255,0,0)
+
+		// 获取body元素
+		document.body.style.backgroundColor = randomColor();
+
+		// document.getElementById('mybody').style.backgroundColor = randomColor();
+
+		var btn = document.getElementById('btn');
+		btn.onclick = function(){
+			document.body.style.backgroundColor = randomColor();
+		}
+	</script>
+</body>
+</html>

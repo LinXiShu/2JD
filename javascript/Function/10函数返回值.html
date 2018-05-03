@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>10函数返回值</title>
+	<script>
+		/*
+			函数返回值
+				* 函数默认返回值为：undefined
+				* return val：把val返回到函数执行的位置
+
+
+			return
+				* 终止函数的执行,return后的代码不会执行
+				* return后如果有值，则把这个值返回到函数执行的地方
+
+			参数：从外往内传
+			返回值：从内往外传
+		 */
+		
+
+		function show(a){
+			console.log(a);
+			a++;
+			return 666;//跳出函数
+			console.log(a);
+		}
+
+
+		show(10);//666
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

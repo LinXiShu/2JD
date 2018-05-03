@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>04声明提前</title>
+	<script>
+		// console.log(show);//报错
+	</script>
+
+	<script>
+		// 声明提前
+		// var sum;
+		// function show(){
+
+		// }
+		/*
+			声明提前
+				* 变量声明
+				* 函数声明
+			只能提前到script标签所在的范围
+		 */
+		
+
+		console.log(666);
+		console.log(777);
+		console.log(sum);
+		console.log(show);
+		var sum = function(){};
+		function show(){
+
+		}
+		console.log(888);
+		console.log(sum);
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

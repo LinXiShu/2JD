@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>05作用域</title>
+	<script>
+		/*
+			作用域（变量的使用范围）
+				* 全局作用域：函数外
+					* 全局变量
+				* 局部作用：函数内
+					* 局部变量
+
+			变量访问规则（就近原则）：
+				当前函数->往函数外查找->...->全局作用域
+
+		 */
+		
+		// 全局变量
+		var num = 100;
+
+		function sum(){
+			// 局部作用域
+			// 变量的使用范围：函数内部
+			// 能在函数内使用全局变量
+			// 为什么能在函数内使用全局变量？？？
+			var a = 10;
+			var b = 20;
+
+			var num = 30;
+
+			console.log(a+b+num);
+
+			// console.log(ccc)
+		}
+
+		sum();
+
+		// 此处不能使用a,b变量
+		// console.log(a,b);//报错a is not define
+
+
+		var a = 10;
+		function test(){
+			// var a
+			// 声明提前
+		    console.log(a);
+
+
+
+		    var a=20;
+		}
+		test() //==> 会得到什么信息？undefined
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
