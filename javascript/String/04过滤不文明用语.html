@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>过滤不文明用语</title>
+	<style>
+		ul{padding:0;margin:0;list-style:none;}
+		.container{width:600px;margin:20px auto;}
+		.container li{border-bottom:1px dotted #ddd;padding:10px;margin:10px 0;}
+		textarea{display:block;width:100%;height:60px;}
+	</style>
+	
+</head>
+<body>
+	<div class="container">
+		<h1>过滤敏感字符</h1>
+		<ul id="msglist"></ul>
+		<textarea id="msg"></textarea>
+		<button id="btn">提交</button>
+	</div>
+
+	<script>
+		/*
+			思路：
+				1）发送消息
+					* 绑定事件
+					* 获取输入信息
+				2)过滤敏感字符
+					* 创建敏感字符库
+					* 替换敏感字符：replace()
+				3）把信息写入页面
+
+
+
+				* 正则表达
+					* 定义 var myname = 'laoxie'
+						* 字面量：var reg = /laoxie/ig;
+						* 构造函数：var reg = new RegExp('laoxie','gi')
+					* 参数
+						* i：不区分大小写（忽略大小写）
+						* g：全部匹配
+	 */
+		// 获取元素
+		var msglist = document.getElementById('msglist');
+		var msg = document.getElementById('msg');
+		var btn = document.getElementById('btn');
+
+		// 创建一个数组，用以保存输入的信息
+		var data = [];
+
+		// 敏感字符库
+		var mingan = ['操','他妈的','TMD','fuck','shit','法轮功','金三胖','翻墙','达赖'];
+
+
+
+		// 1）发送消息
+		btn.onclick = function(){
+			// 获取输入信息
+			var _msg = msg.value;
+
+			// 在写入数组前过滤
+			// 把敏感字符替换成**:
+			// 缺点：1.不能过滤大小写，2.不能过滤多个敏感字符
+			mingan.forEach(function(item){
+				var reg = new RegExp(item,'gi');
+				_msg = _msg.replace(reg,'**');
+			})
+
+			data.push(_msg);
+
+			render();
+
+			msg.value = '';
+			msg.focus();
+		}
+
+
+		function render(){
+			msglist.innerHTML = data.map(function(m){
+				return '<li>'+m+'</li>';
+			}).join('\n');
+		}
+		
+	</script>
+</body>
+</html>

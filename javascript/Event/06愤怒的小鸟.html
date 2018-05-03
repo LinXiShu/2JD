@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>愤怒的小鸟</title>
+	<style>
+		img{position:absolute;top:100px;left:0;width:200px;}
+
+		.d-right{transform: rotateY(180deg);}
+		.d-up{transform: rotateZ(45deg)}
+		.d-down{transform: rotateZ(-45deg)}
+	</style>
+	<script>
+		/*
+			status
+			name
+			top
+		 */
+		window.onload = function(){
+			/*
+				键盘事件
+					* onkeydown 某个键盘按键被按下(按住不放会不断触发)
+					* onkeyup 某个键盘按键被松开。
+					* onkeypress 键盘<字符键>被按下触发(如果按住不放的话，会重复触发此事件)。
+						* 按下可输入一个字符的键为字符串键
+						* 当需要获取输入字符时(包括带小写)
+					* event
+						* which/keyCode 
+							* 左上右下:37,38,39,40
+							* 空格:32
+							* 回车:13
+							* ESC:27
+				愤怒小鸟
+					* 移到边缘,在另一侧出现
+			 */
+			var bird = document.getElementById('bird');
+
+		/*	document.onkeydown = function(){
+				console.log('keydown');
+			}
+
+			document.onkeyup = function(){
+				console.log('keyup')
+			}
+
+			document.onkeypress = function(){
+				console.log('keypress')
+			}*/
+
+			document.onkeydown = function(e){
+				//var e
+				e = e || window.event;
+
+				var key = e.keyCode || e.which;
+
+				// 获取当前left,top
+				var left = bird.offsetLeft;//getComputedStyle(bird).left;//100px
+				var top  = bird.offsetTop;
+
+				var dir = '';
+
+				switch(key){
+					// 左
+					case 37:
+						left -= 10;
+						dir = '';
+						break;
+					// 右
+					case 39:
+						left += 10;
+						dir = 'd-right';
+						break;
+					// 上
+					case 38:
+						top -= 10;
+						dir = 'd-up';
+						break;
+					// 下
+					case 40:
+						top += 10;
+						dir = 'd-down';
+						break;
+				}
+
+				bird.className = dir;
+
+				// 设置bird的top,left
+				bird.style.left = left + 'px';
+				bird.style.top = top + 'px';
+			}
+		}
+	</script>
+</head>
+<body>
+	<img src="img/bird.jpg" id="bird">
+	<input type="text">
+</body>
+</html>

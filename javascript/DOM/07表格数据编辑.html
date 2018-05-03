@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>07表格数据编辑</title>
+	<style>
+		table{border:1px solid #666;border-collapse: collapse;}
+		td,th{border:1px solid #666;padding:5px 10px;}
+	</style>
+	<script>
+		window.onload = function(){
+			/*
+				复制节点
+					* cloneNode()
+
+				扩展：
+					* 封装一个通过className获取元素的方法（兼容IE8-）
+					* 复制tr保留事件
+			 */
+			var table = document.getElementsByClassName('datalist')[0];
+			var tbody = table.children[0];
+			var btnCopy = table.getElementsByClassName('btnCopy');//IE8-
+			var btnDel = table.getElementsByClassName('btnDel');
+
+
+			for(var i=0;i<btnCopy.length;i++){
+				// 复制行到最后
+				btnCopy[i].onclick = function(){
+					// 通过节点关系获取当前行
+					var currentTr = this.parentNode.parentNode;
+
+					// 与创建一致
+					var newTr = currentTr.cloneNode(true);
+					newTr.children[0].innerHTML = tbody.children.length+1;
+
+					tbody.appendChild(newTr);
+
+					console.log(newTr);
+				}
+
+
+				// 删除当前行
+				btnDel[i].onclick = function(){
+					// 通过节点关系获取当前行
+					var currentTr = this.parentNode.parentNode;
+
+					// 通过父级删除当前行
+					currentTr.parentNode.removeChild(currentTr)
+				}
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<h1>07表格数据编辑</h1>
+	<table class="datalist">
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>单元格01</td>
+				<td>单元格02</td>
+				<td>单元格03</td>
+				<td>单元格04</td>
+				<td>单元格05</td>
+				<td><button class="btnCopy">复制</button><button class="btnDel">删除</button></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>单元格01</td>
+				<td>单元格02</td>
+				<td>单元格03</td>
+				<td>单元格04</td>
+				<td>单元格05</td>
+				<td><button class="btnCopy">复制</button><button class="btnDel">删除</button></td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>单元格01</td>
+				<td>单元格02</td>
+				<td>单元格03</td>
+				<td>单元格04</td>
+				<td>单元格05</td>
+				<td><button class="btnCopy">复制</button><button class="btnDel">删除</button></td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>单元格01</td>
+				<td>单元格02</td>
+				<td>单元格03</td>
+				<td>单元格04</td>
+				<td>单元格05</td>
+				<td><button class="btnCopy">复制</button><button class="btnDel">删除</button></td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>单元格01</td>
+				<td>单元格02</td>
+				<td>单元格03</td>
+				<td>单元格04</td>
+				<td>单元格05</td>
+				<td><button class="btnCopy">复制</button><button class="btnDel">删除</button></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

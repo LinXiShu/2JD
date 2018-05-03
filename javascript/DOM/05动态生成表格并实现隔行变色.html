@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动态生成表格并实现隔行变色</title>
+	<style>
+		/*
+			
+		 */
+		table{border:1px solid #666;border-collapse: collapse;}
+		td,th{border:1px solid #666;padding:5px 10px;}
+
+		.even{background-color: #ffc;}
+	</style>
+	<script>
+		window.onload = function(){
+			/*
+				动态生成表格并实现隔行变色
+					* 隔行换色
+					* 生成表格
+			 */
+			
+			var row = document.getElementById('row');
+			var col = document.getElementById('col');
+			var btn = document.getElementsByClassName('btnCreate')[0];
+			var output = document.getElementsByClassName('output')[0];
+
+			// 绑定事件生成表格
+			btn.onclick = function(){
+				// 获取行列
+				var _row = row.value*1;
+				var _col = col.value*1;
+
+				// 创建表格
+				var table = document.createElement('table');
+				var tbody = document.createElement('tbody');
+
+
+				for(var i=0;i<_row;i++){
+					// 创建行
+					var tr = document.createElement('tr');
+
+					// 选择性设置tr的类名
+					if(i%2===0){
+						tr.className = 'even';
+					}
+
+
+					for(var j=0;j<_col;j++){
+						var td = document.createElement('td');
+
+						// var txt = document.createTextNode('单元格'+i+j);
+						// td.appendChild(txt);
+						td.innerHTML = '单元格'+i+j
+
+						// td写入tr
+						tr.appendChild(td);
+					}
+
+
+					// tr写入tbody
+					tbody.appendChild(tr);
+				}
+
+
+				// 把tbody写入table
+				// 把table写入页面.output
+				table.appendChild(tbody);
+				output.appendChild(table);
+
+			}
+		}
+		
+	</script>
+</head>
+<body>
+	<h1>动态生成表格并实现隔行变色</h1>
+	<label for="row">行：</label>
+	<input type="text" name="row" id="row">
+	<label for="col">列：</label>
+	<input type="text" name="col" id="col">
+	<button class="btnCreate">生成表格</button>
+	<div class="output"></div>
+	<!-- <table>
+		<tbody>
+			<tr>
+				<td></td>
+			</tr>
+		</tbody>
+	</table> -->
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>利用事件委托实现新添加的按钮响应点击事件</title>
+	<style>
+		.datalist{border:1px solid #ddd;border-collapse: collapse;}
+		.datalist td{border:1px solid #ddd;padding:5px 10px;}
+
+		#box{padding:10px;width:300px;border:10px solid #f00;text-align:center;}
+	</style>
+	<script>
+		window.onload = function(){
+			/*
+				利用事件委托实现新添加的按钮响应点击事件
+				>利用事件冒泡过程中事件源对象不变的特性,把本来绑定给某个元素的事件委托给它的父级处理
+				>减少事件绑定数量
+
+					* 利用冒泡
+					* 利用事件源对象
+						* 发生事件时的对象,事件源对象在事件传播过程中不会改变
+						* 获取
+							* 标准:event.target
+							* IE8-:event.srcElement
+			 */
+			var table = document.getElementsByClassName('datalist')[0];//[]
+			var tbody = table.children[0];
+			var btnCopy = tbody.getElementsByClassName('copy');
+
+			// for(var i=0;i<btnCopy.length;i++){
+			// 	btnCopy[i].onclick = function(){
+			// 		// 获取当前行
+			// 		var currentTr = this.parentNode.parentNode;
+
+			// 		var copyTr = currentTr.cloneNode(true);
+
+			// 		tbody.appendChild(copyTr);
+			// 	}
+			// }
+
+
+			// 优化
+			table.onclick = function(e){
+				e = e || window.event;
+				var target = e.target || e.srcElement;
+
+				console.log(this);//table
+				// 复制
+				if(target.className === 'copy'){
+					var currentTr = target.parentNode.parentNode;
+
+					var copyTr = currentTr.cloneNode(true);
+
+					tbody.appendChild(copyTr);
+				}
+
+				// 删除
+				else if(target.className === 'del'){
+					var currentTr = target.parentNode.parentNode;
+
+					currentTr.parentNode.removeChild(currentTr);
+				}
+			}
+
+
+			// 事源对象的偏移量:e.offsetX,e.offsetY
+			var box = document.getElementById('box');
+
+			box.onclick = function(e){
+				console.log(e.target,e.offsetX)
+			}
+		}
+	</script>
+</head>
+<body>
+	<h1>利用事件委托实现新添加的按钮响应点击事件</h1>
+	<table class="datalist">
+		<tbody>
+			<tr>
+				<td>1</td>
+				<td>单元格01</td>
+				<td>单元格02</td>
+				<td>单元格03</td>
+				<td>单元格04</td>
+				<td>单元格05</td>
+				<td><button class="copy">复制</button><button class="del">删除</button></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>单元格01</td>
+				<td>单元格02</td>
+				<td>单元格03</td>
+				<td>单元格04</td>
+				<td>单元格05</td>
+				<td><button class="copy">复制</button><button class="del">删除</button></td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>单元格01</td>
+				<td>单元格02</td>
+				<td>单元格03</td>
+				<td>单元格04</td>
+				<td>单元格05</td>
+				<td><button class="copy">复制</button><button class="del">删除</button></td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>单元格01</td>
+				<td>单元格02</td>
+				<td>单元格03</td>
+				<td>单元格04</td>
+				<td>单元格05</td>
+				<td><button class="copy">复制</button><button class="del">删除</button></td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>单元格01</td>
+				<td>单元格02</td>
+				<td>单元格03</td>
+				<td>单元格04</td>
+				<td>单元格05</td>
+				<td><button class="copy">复制</button><button class="del">删除</button></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div id="box">
+		<img src="img/big_4.jpg">
+	</div>
+</body>
+</html>

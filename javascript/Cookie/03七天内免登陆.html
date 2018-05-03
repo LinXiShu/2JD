@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>10天免登录</title>
+	<style type="text/css">
+		    body{
+			    background-color:rgb(177, 208,224); font: normal 12px Trebuchet MS; color:#000;
+		    }
+		    form{ 
+			    width:220px; padding:10px;
+			    background-color:#DDEEF6; 
+			    box-shadow: 0px 0px 10px 0px #888888;
+			    border:1px solid #DDEEF6;
+			    border-radius:6px;
+			    margin: auto;
+		    }
+		    .roundedCorners-textbox{ 
+				border:1px solid #999; width:160px;
+		    }
+			.checkbox {
+				margin-left: 30px;
+				border:1px solid #999; width:20px;
+			}
+	</style>
+</head>
+<script>
+	window.onload = function(){
+		/*
+			10天免登录
+				1)点击提交按钮时，判断是否勾选"10天内免登陆"选项
+					把用户名和密码写入cookie（添加过期时间是10天后）
+				2）页面刷新时，检查cookie是否存在
+					存在：直接跳转到百度页面
+					不存在：停留到当前页面
+
+		 */
+		var btnSubmit = document.getElementById('btnSubmit');
+		var checkbox = document.getElementsByClassName('checkbox')[0];
+		var username = document.getElementById('username');
+		var password = document.getElementById('password');
+
+		btnSubmit.onclick = function(){
+			var _username =username.value;
+			var _password = password.value;
+
+			// 判断是否勾选"10天内免登陆"选项
+			if(checkbox.checked){
+				// 设置7天后
+				var now = new Date();
+				var date = now.getDate();
+				now.setDate(date+7);
+				// 把用户名/密码存入cookie
+				document.cookie = 'username='+_username + ';expires='+now;
+				document.cookie = 'password='+_password + ';expires='+now;
+			}
+		}
+
+
+		// 2）页面刷新时，检查cookie是否存在
+		var _username,_password;
+
+		// 获取所有cookie
+		var cookies = document.cookie
+		cookies = cookies.split('; ');
+		cookies.forEach(function(item){
+			item = item.split('=');
+
+			if(item[0] === 'username'){
+				_username = item[1];
+			}else if(item[0] === 'password'){
+				_password = item[1];
+			}
+		})
+
+
+		if(_username && _password){
+			location.href = 'http://www.baidu.com?username='+_username + '&password='+_password
+		}
+
+
+		
+	}
+</script>
+<body>
+	<form action="http://www.baidu.com" method="get">	
+		<label>账号</label>
+		<input id="username" name="username" type="text" /><br /><br />
+		<label>密码</label>
+		<input id="password" name="password" type="text" /><br /><br />	
+    	<label><input type="checkbox" class="checkbox" />
+		10天内免登陆</label>
+    	<br/><br/>
+		<input type="submit" value="确定" id="btnSubmit" />
+		<input type="reset" value="清空" />
+	</form>	
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>10事件捕获</title>
+	<style>
+		#box{width:200px;height:100px;background-color: #f00;}
+		#box span{display: block;width:100px;height:50px;background-color: #58bc58;}
+	</style>
+	<script>
+		window.onload =function(){
+			/*
+				10事件捕获
+					* node.addEventListener(type,fn,isCapture)
+						* type:事件类型
+						* fn:事件处理函数
+						* isCapture:是否捕获,默认false (把事件处理函数提起到捕获阶段执行)
+					* IE8:node.attachEvent(type,fn);
+						* type:带on的事件类型
+						* 没有捕获节点
+			 */
+			
+			var box= document.getElementById('box');
+			var span = box.firstElementChild;
+
+			// span.onclick = function(){
+			// 	//冒泡
+			// }
+			box.addEventListener('click',function(){
+				console.log('#box')
+			})
+			span.addEventListener('click',function(){
+				//冒泡
+				//true:捕获
+				console.log('span')
+			},true);
+
+			document.body.addEventListener('click',function(){
+				//冒泡
+				//true:捕获
+				console.log('body')
+			},true);
+
+			document.documentElement.addEventListener('click',function(){
+				console.log('html')
+			});
+
+			document.addEventListener('click',function(){
+				console.log('document')
+			});
+
+			window.addEventListener('click',function(){
+				console.log('window');
+			});
+		}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<span></span>
+	</div>
+</body>
+</html>

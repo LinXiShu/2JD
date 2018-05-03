@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>分别计算出以上数组的最大值，最小值和平均值，并输出他们的索引</title>
+	<script>
+		/*
+			分别计算出以上数组的最大值，最小值和平均值，并输出他们的索引
+				* 最大值	索引
+				* 最小值	索引
+				* 平均值
+		 */
+		var arr = [10,8,55,32,18,9,11,30,16,19,2,20];
+
+		// 假设第一个为最大值/最小值
+		var maxIdx = 0;
+		var max = arr[maxIdx];
+		var minIdx = 0;
+		var min = arr[minIdx];
+
+		var total = 0;
+
+		// 遍历数组，找出比max大的数并重置max
+		// 找出比min大的数并重置min
+		arr.forEach(function(item,idx){
+			total += item;
+
+			if(item>max){
+				max = item;
+				maxIdx = idx;
+			}
+
+			if(item<min){
+				min = item;
+				minIdx = idx;
+			}
+		});
+
+		console.log('最大值：' + max + ',索引值：'+maxIdx + '; 最小值：' + min + ', 索引值：' + minIdx + '; 平均值：' + (total/arr.length).toFixed(2));
+
+
+	</script>
+</head>
+<body>
+	<h1>分别计算出以上数组的最大值，最小值和平均值，并输出他们的索引</h1>
+</body>
+</html>

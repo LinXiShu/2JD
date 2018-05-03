@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自动应答机器人</title>
+	<style>
+		ul{list-style: none;padding:0;margin:0;}
+		.msg-list{position:relative;width:600px;margin:0 auto;}
+		.msg-list ul{padding:10px;min-height:200px;max-height:400px;overflow-y:auto;border:1px solid #ddd;}
+		.msg-list li{float:left;clear:both;margin:10px 0;padding:5px;line-height:2;border-radius:5px;background-color:#efefef;}
+		.msg-list li.active{float:right;background-color:#fc0;color:#fff;}
+		.msg-list textarea{display:block;min-height:50px;margin:10px 0;width:100%;box-sizing: border-box;}
+		.status{display:none;position: absolute;left:0;bottom:0;right:0;padding:5px 10px;text-align:center;color:#999;}
+	</style>
+	<script src="../common.js"></script>
+	<script>
+		window.onload = function(){
+			/*
+				自动应答机器人
+				>模拟打字效果
+					* 发送消息
+						* 获取输入信息
+						* 生成li
+						* 写入ul
+					* 自动回复
+						* 根据输入的信息回复
+						* 预设回复内容
+
+
+				PS：节点也是一个对象
+			 */
+			// 获取元素
+			var autoAnswer = document.getElementById('autoAnswer');
+			var ul = autoAnswer.children[0];
+			var msg = autoAnswer.children[1];
+			var btn = autoAnswer.children[2];
+			var status = autoAnswer.children[3];
+			// var btn = autoAnswer.getElementsByTagName('button')[0]
+			// var ul = autoAnswer.getElementsByTagName('ul')[0]
+			// var msg = autoAnswer.getElementsByTagName('textarea')[0]
+			// var children = Element.get(autoAnswer.childNodes);
+			// var ul = children[0];
+			// var msg = children[1];
+			// var btn = children[2];
+			// autoAnswer.childNodes.filter(function(ele){
+			// 	return ele.nodeType===1
+			// })
+			// for(var i=0;i<autoAnswer.childNodes.length;i++){
+			// 	if(autoAnswer.childNodes[i].nodeType === 1){
+			// 		children.push(autoAnswer.childNodes[i]);
+			// 	}
+			// }
+
+
+			// 预设回复内容
+			var q = '你好,约吗,你妹,天王盖地虎,回家吃饭了'.split(',');
+			var a = '他好我也好,叔叔在哪约,我就是你妹,小鸡炖蘑菇,算了不吃了'.split(',');
+
+		
+
+			// 发送消息
+			btn.onclick = function(){
+				// 获取输入信息
+				var _msg = msg.value.trim();
+
+				// 根据信息创建li
+				var qli = document.createElement('li');
+				qli.innerHTML = _msg;
+				qli.className = 'active';
+
+				// 把li写入ul
+				ul.appendChild(qli);
+
+				// 显示对方输入状态
+				status.style.display = 'block';
+
+				// 自动应答
+				// 判断输入信息在q中的位置
+				var idx = q.indexOf(_msg);
+				var ali = document.createElement('li');
+				if(idx>=0){
+					ali.innerHTML = a[idx];
+				}else{
+					ali.innerHTML = '你说什么，风太大我听不到';
+				}
+
+				// 过一会儿回复信息
+				setTimeout(function(){
+					ul.appendChild(ali);
+
+					// 把ali滚动到可视区域
+					ali.scrollIntoView();
+					
+					status.style.display = 'none';
+				},1000);
+
+				msg.focus();
+				msg.value = '';
+			}
+		}
+	</script>
+</head>
+<body>
+	<h1>自动应答机器人</h1>
+	<div id="autoAnswer" class="msg-list">
+		<ul>
+		</ul>
+		<textarea></textarea>
+		<button>提交</button>
+		<div class="status">对方正在输入...</div>
+	</div>
+</body>
+</html>

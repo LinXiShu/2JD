@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>随机点名程序（简单版）</title>
+	
+</head>
+<body>
+	<h1>随机点名程序（简单版）</h1>
+	<input type="text" id="username">
+	<button id="btn">点名</button>
+
+	<script src="../common.js"></script>
+	<script>
+
+		/*
+			随机点名程序（简单版）
+				* 随机拿出一个名字
+				* 随机索引值
+
+			* Cannot set property 'onclick' of null
+				* 不能设置null的onclick属性
+				* 推导：onclick前的元素为null
+			* 顺序：从上至下顺序执行
+		 */
+		
+		var namelist = ["潘培基", "张忠", "胡歆国", "黄开展", "罗术坤", "杨镇钟", "吴志鹏", "林朵连", "孙晨", "厉康银", "陈俊斌", "邹倩莹", "杨俊琦", "陈香棋", "王清霞", "黎子聪", "邱启宏", "陈志坚", "陈方庆", "罗洁颖", "刘盼", "伍萃琪", "张京港", "黄飞恒", "温婷婷", "陈东林", "杨有国", "曾一帆", "叶靖", "陈洪亮", "杨钰琼", "李锦沛", "彭俊威", "曹伟政", "方汉佳", "萧文杰", "谭宏钊", "陈世坯", "何灿新", "叶锡良", "陈铭思", "熊凡一", "李帅帅", "林颂明"];
+
+		var btn = document.getElementById('btn');
+		var username = document.getElementById('username');
+
+		btn.onclick = getName;
+
+		getName();
+
+		// 当相同代码在页面出现多次时：封装
+		function getName(){
+			// 获取随机索引值
+			var idx = randomNumber(0,namelist.length-1);
+
+			// 把随机名字写入页面
+			username.value = namelist[idx];
+		}
+
+
+	</script>
+</body>
+</html>

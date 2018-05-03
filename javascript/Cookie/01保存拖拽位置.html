@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01保存拖拽位置</title>
+	<style>
+		#box{position:absolute;left:0;top:0;padding:20px;background-color: #fc0;text-align:center;}
+	</style>
+	<script>
+		window.onload = function(){
+			/*
+				保存拖拽位置
+					1）保存拖拽的最终位置
+						* 写入cookie
+					2）页面重载时读取位置
+						* 读取cookie
+
+
+					cookie操作
+						* 增	写入一个新的cookie
+							* document.cookie = 'myname=laoxie';
+							* 一次只能写一个，只能是字符串
+							* 写入不会覆盖，而是增加
+						* 删	删除已经存在的cookie
+						* 改	修改已存在的cookie
+						* 查	读取已存在的cookie
+							* 读取所有可访问的cookie
+			 */
+			var box = document.getElementById('box');
+			// console.log(box)
+
+			// 读取cookie
+			var cookies = document.cookie;//top=160px; left=404px
+			console.log(cookies);
+			cookies = cookies.split('; ');
+			cookies.forEach(function(item){
+				var arr = item.split('=');
+				if(arr[0] == 'left' || arr[0] == 'top'){
+					box.style[arr[0]] = arr[1];
+				}
+			})
+
+			box.onmousedown = function(e){
+				// 按下时记录按下位置
+				// var ox = e.offsetX;
+				// var oy = e.offsetY;
+				var ox = e.clientX - box.offsetLeft;
+				var oy = e.clientY - box.offsetTop;
+
+				document.onmousemove = function(evt){
+
+					box.style.left = evt.clientX - ox + 'px';
+					box.style.top = evt.clientY - oy + 'px';
+
+
+					// 阻止图片的默认行为
+					evt.preventDefault();
+				}
+
+				e.preventDefault();
+			}
+
+
+			// 鼠标松开，清除mousemove事件
+			document.onmouseup = function(){
+				document.onmousemove = null;
+
+				// 把最终的top,left写入cookie
+				document.cookie = 'top='+box.style.top;
+				document.cookie = 'left='+box.style.left;
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<img src="img/big_4.jpg">
+	</div>
+</body>
+</html>

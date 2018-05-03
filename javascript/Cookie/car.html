@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>购物车</title>
+	<style>
+		#carList li{position:relative;padding-bottom:15px;margin-bottom:15px;border-bottom:1px solid #ddd;}
+		#carList img{display:block;width:100px;}
+		#carList li .btn-close{position:absolute;top:0;right:0;padding:0 5px;cursor:default;}
+		#carList li .btn-close:hover{background-color:#f00;color:#fff;}
+		.subPrice{padding:5px 20px;color:#f00;font-weight:bold;text-align:right;}
+		#carList .price span{color:#f00;font-size:14px;}
+		.price span::before,.subPrice::before{
+			content:'￥';
+			font-size:12px;
+		}
+		#carList .price span{font-size:11px;}
+	</style>
+	<script src="js/common.js"></script>
+	<script>
+	window.onload = function(){
+		/*
+			* 读取cookie中的goodslist
+				* json -> Array
+				* 根据数据生成html
+			* 删除单个cookie
+			* 清空购物车
+				* 清除cookie goodslist
+			
+			json字符串格式：
+				1.属性名和字符串必须用双引号
+				2.不能有注释
+				3.不能有多余的逗号
+				4.属性值必须为以下数据类型
+					* Number
+					* String
+					* Boolean
+					* Array
+					* Object
+					* Null
+
+			cookie的访问规则：类似变量访问规则
+				* 当前目录查找		当前函数
+				* 往上层目录		上一层函数
+				* ...				...
+				* 网站根目录		全局作用域（window）
+		 */
+		var oCarList = document.getElementById('carList');
+		var oSubPrice = oCarList.nextElementSibling;
+		var btnClear = document.getElementById('btnClear');
+
+		// 取cookie中的goodslist
+		var goodslist = JSON.parse(Cookie.get('goodslist'));
+		
+		var ul = document.createElement('ul');
+
+		var total = 0;
+
+		ul.innerHTML = goodslist.map(function(goods){
+			// 计算总价
+			total += goods.price * goods.qty;
+
+			return '<li data-guid="'+ goods.guid +'">'+
+				'<img src="'+ goods.imgurl +'" />' + 
+				'<h4>'+goods.name+'</h4>' + 
+				'<p class="price">价格：<span>'+ goods.price +'&times; '+goods.qty + '</span></p>' +
+				'<span class="btn-close">&times;</span>' + 
+			'</li>'
+		}).join('\n');
+
+		oCarList.appendChild(ul);
+		oSubPrice.innerText = total;
+
+
+		// 清空购物车
+		btnClear.onclick = function(){
+			Cookie.remove('goodslist');
+
+			oCarList.innerHTML = '';
+			oSubPrice.innerText = '0';
+		}
+	}
+		
+	</script>
+</head>
+<body>
+	<h1>购物车</h1>
+	<div id="carList">
+		
+	</div>
+	<div class="subPrice"></div>
+	<a href="#" id="btnClear">清空购物车</a>
+</body>
+</html>

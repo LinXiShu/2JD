@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>09倒计时</title>
+	<style>
+		.btn{position:relative;}
+		#countDown{position:absolute;left:55px;top:50%;transform:translate(0,-58%);}
+	</style>
+
+</head>
+<body>
+	<div class="goods">
+		<img src="img/g2.jpg" id="meinv">
+		<h4>今年过节不收礼，收礼只收黑妹子</h4>
+		<p class="price">价格：<span>9.8W</span></p>
+		<div class="btn">
+			<div id="countDown"></div>
+			<img src="img/btn_buy0.jpg" id="btnBuy">
+		</div>
+	</div>
+	<script src="../common.js"></script>
+	<script>
+			/*
+				倒计时
+					1）指定结束时间
+					2）不断拿当前时间跟结束时间对比，计算差值
+					3）把差值转换成《剩余时间》
+					4）拼接时间格式，写入页面
+					5）倒计时结束时
+						* 停止定时器
+						* 替换购买按钮
+						* 隐藏倒计时
+			 */
+			
+			// 获取页面元素
+			var meinv = document.getElementById('meinv');
+			var countDown = document.getElementById('countDown');
+			var btnBuy = document.getElementById('btnBuy');
+
+			// 1）指定结束时间
+			var d = '2018-4-20 15:13:50';
+
+			function cb(){
+				meinv.src = 'img/g3.jpg';
+
+				// * 替换购买按钮
+				btnBuy.src = 'img/btn_buy.jpg';
+
+				// * 隐藏倒计时
+				countDown.style.display = 'none';
+			}
+
+			countDown.innerHTML = showTime(d,cb);
+			var timer = setInterval(function(){
+				countDown.innerHTML = showTime(d,cb);
+			},1000);
+
+			// function showTime(end){
+			// 	// 2）不断拿当前时间跟结束时间对比，计算差值
+			// 	var offset = Date.parse(end) - Date.now();
+
+			// 	// 3）把差值转换成《剩余时间》
+			// 	// 毫秒->秒
+			// 	offset = parseInt(offset/1000);
+
+			// 	// 5）倒计时结束时
+			// 	if(offset <= 0){
+			// 		// * 停止定时器
+			// 		clearInterval(timer);
+
+			// 		meinv.src = 'img/g3.jpg';
+
+			// 		// * 替换购买按钮
+			// 		btnBuy.src = 'img/btn_buy.jpg';
+
+			// 		// * 隐藏倒计时
+			// 		countDown.style.display = 'none';
+			// 	}
+
+			// 	// 23s	0:0:23
+			// 	// 65s	0:1:5
+			// 	// 5m	0:5:0
+			// 	// 85m	1:25:0
+			// 	var sec = offset%60;//剩余秒数
+			// 	var min = parseInt(offset/60)%60;//剩余分数
+			// 	var hour = parseInt(offset/60/60)%24;//剩余小时数
+			// 	var day = parseInt(offset/60/60/24);//天数
+
+			// 	// 补0操作
+			// 	sec = sec<10 ? '0'+sec : sec;
+			// 	min = min<10 ? '0'+min : min;
+			// 	hour = hour<10 ? '0'+hour : hour;
+
+			// 	return day + '天' + hour + '时' + min + '分' + sec + '秒'
+
+			// 	// console.log(offset)
+			// }
+	</script>
+</body>
+</html>

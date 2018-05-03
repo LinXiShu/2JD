@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>11事件清除</title>
+	<script>
+		
+		window.onload = function(){
+			/*
+				事件清除
+					* DOM节点绑定：重置事件
+					* 事件监听器
+						* 标签：addEventListener(type,fn,isCapture) 传入的所有参数(包括函数)必须与事件监听器中一致，否则不能移除事件
+						* IE8-：detachEvent('onclick',fun)，传入的参数fun要跟添加时一样，否则不能移除事件
+			 */
+			var girl = document.getElementById('girl');
+
+			girl.onclick = function(){
+				girl.src = 'img/bird.jpg';
+			}
+
+			// girl.onclick = null;
+
+			function over(){
+				girl.style.border = '5px solid #ddd';
+			}
+
+			girl.addEventListener('mouseover',over,true);
+
+			girl.addEventListener('mouseout',function(){
+				girl.style.border = 'none';
+			});
+
+			// 清除
+			girl.removeEventListener('mouseover',over,true)
+		}
+	</script>
+</head>
+<body>
+	<img src="img/big_4.jpg" id="girl">
+</body>
+</html>

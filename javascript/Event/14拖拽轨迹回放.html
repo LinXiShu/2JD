@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>完美拖拽</title>
+    <style>
+    html,
+    body {
+        overflow: hidden;
+    }
+    
+    body,
+    div,
+    h2,
+    p {
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+        color: #fff;
+        background: #000;
+        font: 12px/2 Arial;
+    }
+    
+    p {
+        padding: 0 10px;
+        margin-top: 10px;
+    }
+    
+    span {
+        color: #ff0;
+        padding-left: 5px;
+    }
+    
+    #box {
+        position: absolute;
+        width: 300px;
+        height: 150px;
+        background: #333;
+        border: 2px solid #ccc;
+/*        top: 50%;
+        left: 50%;
+        margin: -75px 0 0 -150px;*/
+    }
+    
+    #box h2 {
+        height: 25px;line-height:25px;
+        cursor: move;
+        background: #222;
+        border-bottom: 2px solid #ccc;
+        text-align: right;
+        padding: 0 10px;
+    }
+    
+    #box h2 a {
+        color: #fff;
+        font: 12px/25px Arial;
+        text-decoration: none;
+        outline: none;
+    }
+    </style>
+
+</head>
+<body>
+	<div id="box">
+        <h2><a href="#">点击回放拖动轨迹</a></h2>
+        <p><strong>Drag:</strong><span>false</span></p>
+        <p><strong>offsetTop:</strong><span>231</span></p>
+        <p><strong>offsetLeft:</strong><span>533</span></p>
+    </div>
+    <script>
+    	(function(){
+    		var box = document.getElementById('box');
+            var title = box.children[0];
+            var btnBack = title.children[0];
+    		
+            var dragStatus = box.children[1].children[1];
+            var topStatus = box.children[2].children[1];
+            var leftStatus = box.children[3].children[1];
+
+            // 创建一个数组，用于记录box移动过的坐标
+            var arr = [];
+
+
+            // 拖拽效果
+            // 只有头部才可拖拽
+            title.onmousedown = function(e){
+                // 记录按下位置
+                var ox = e.clientX - box.offsetLeft;
+                var oy = e.clientY - box.offsetTop;
+
+                // 记录按下状态
+                dragStatus.innerText = 'true';
+
+                // 记录初始坐标
+                arr = [{
+                    left:box.offsetLeft,
+                    top:box.offsetTop
+                }];
+
+                document.onmousemove = function(evt){
+                    var left = evt.clientX - ox; 
+                    var top = evt.clientY - oy;
+
+                    // 记录状态
+                    topStatus.innerText = top;
+                    leftStatus.innerText = left;
+
+                    arr.push({
+                        left:left,
+                        top:top
+                    })
+
+                    // 设置top,left值
+                    box.style.left = left + 'px';
+                    box.style.top = top + 'px';
+
+
+
+
+                    evt.preventDefault();
+                }
+
+                e.preventDefault();
+            }
+
+            document.onmouseup = function(){
+                document.onmousemove = null;
+                dragStatus.innerText = 'false';
+            }
+
+
+            // 轨迹回放
+            // 不断获取记录的坐标
+            btnBack.onmousedown = function(e){
+                var idx = arr.length-1;
+                var timer = setInterval(function(){
+                    box.style.left = arr[idx].left + 'px';
+                    box.style.top = arr[idx].top + 'px';
+                     // 记录状态
+                    topStatus.innerText = arr[idx].left;
+                    leftStatus.innerText = arr[idx].top;
+
+                    idx--;
+                    if(idx<0){
+                        clearInterval(timer);
+                        arr = [];
+                    }
+                },30);
+
+                // 阻止向上冒泡
+                e.stopPropagation();
+            }
+    	})()
+    </script>
+</body>
+</html>

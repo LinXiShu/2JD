@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>判断鼠标按键</title>
+	<style>
+		#box{padding:30px;background-color:#efefef;border:1px solid #ddd;font-size:30px;text-align:center;color:#999;}
+	</style>
+	<script>
+		window.onload = function(){
+			var box = document.getElementById('box');
+
+			box.onmousedown = function(e){
+				e = e || window.event;
+
+				if(e.button === 0){
+					// 左键
+					box.innerText = '射击(左键)';
+				}else if(e.button === 1){
+					// 滚轮
+					box.innerText = '换枪(滚轮)'
+				}else if(e.button === 2){
+					// 右键
+					box.innerText = '开镜瞄准(右键)'
+				}
+				
+			}
+
+		
+		}
+	</script>
+</head>
+<body>
+	<div id="box">鼠标按键测试</div>
+</body>
+</html>

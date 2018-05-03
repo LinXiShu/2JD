@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>09选择排序法</title>
+	<script>
+		/*
+			选择排序法
+				* 把当前元素分别跟后面的元素对比
+				* 把最小的逐个往前排列
+		 */
+		
+		// var arr = [2,10,8,18,9,11,16,19,20,30,32,55]
+		var arr = [10,2,8,55,32,18,9,11,30,16,19,20];
+
+		for(var i=0;i<arr.length;i++){
+			for(var j=i+1;j<arr.length;j++){
+				if(arr[i]>arr[j]){
+					// 互换位置
+					var item = arr[i];
+					arr[i] = arr[j];
+					arr[j] = item;
+				}
+			}
+		}
+
+		console.log(arr);
+
+		// 实现从大到小排列：逆序reverse()
+		
+	</script>
+</head>
+<body>
+	<h1>选择排序法</h1>
+</body>
+</html>

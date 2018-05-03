@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>10在节点中操作html属性</title>
+	<script>
+		window.onload = function(){
+			/*
+				10在节点中操作html属性
+
+					* dom节点操作
+						* 点语法.
+					* html属性操作
+						* setAttribute(attr,val)
+						* getAttribute(attr);
+			 */
+			
+			var meinv = document.getElementById('meinv');
+
+			// title为标准
+			meinv.title = '这就是爱';
+
+			// age为非标准属性：影响节点
+			// meinv.age = 28;
+
+			// 
+			meinv.setAttribute('age',28);
+			meinv.setAttribute('alt','这真是美女');
+			
+		}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<img src="img/g1.jpg" id="meinv">
+	</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>04格式化时间</title>
+	
+</head>
+<body>
+	<h1>格式化时间</h1>
+	<time id="time"></time>
+	<script>
+		/*
+			时间定义
+				* 构造函数
+					* 不带参数：new Date() ->得到运行这行代码时的时间
+			* 时间组成部分
+				* 年、月、日
+				* 时、分、秒、毫秒、微秒
+				* 星期、时区
+			* 获取
+				* getFullYear()
+				* getMonth()	获取月份是从0开始的
+				* getDate()
+				
+				* getHours()
+				* getMinutes()
+				* getSeconds()
+
+				* getDay()	0-6
+
+			要求：格式化时间“2015年08月24 星期五”
+		 */
+		
+		var now = new Date();
+
+		var year = now.getFullYear();
+		var month = now.getMonth();
+		var date = now.getDate();
+
+		var day = now.getDay();
+
+		var week = '天，一，二，三，四，五，六'.split('，');
+
+		var res = year + '年' + month + '月' + date + ' 星期'+ week[day];
+
+		document.write(res);
+		
+	</script>
+</body>
+</html>

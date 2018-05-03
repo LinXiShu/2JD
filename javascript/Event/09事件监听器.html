@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>09事件监听器</title>
+	<style>
+		#box{width:200px;height:100px;background-color: #f00;}
+	</style>
+	<script>
+		window.onload =function(){
+			/*
+				事件监听器
+					* node.addEventListener(type,fn,isCapture)
+						* type:事件类型
+						* fn:事件处理函数
+						* isCapture:是否捕获,默认false
+			 */
+			var box = document.getElementById('box');
+
+			// DOM节点绑定方式
+			// 同名事件被覆盖
+			box.onclick = function(){
+				console.log(666)
+			}
+
+			// 覆盖上面事件
+			box.onclick = function(){
+				console.log(777)
+			}
+
+			// 利用事件监听器绑定事件
+			box.addEventListener('click',function(){
+				console.log(888)
+			});
+			box.addEventListener('click',function(){
+				console.log(999)
+			})
+
+		}
+	</script>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>03获取元素节点</title>
+	<script>
+		window.onload = function(){
+			/*
+				获取元素节点
+					* document.getElementById(id)  
+						* 成功：得到节点node
+						* 不成功：null
+					* getElementsByClassName(classname)  
+					 	* 成功：[node,node]
+					 	* 失败： []
+					* getElementsByTagName(tag)			//[node,node]
+					* document.getElementsByName()	//[node,node]，一般用于表单元素的获取
+			 */
+			
+			var box = document.getElementById('box');
+			
+			// cannot set property 'onclick' of null
+			// 推导：onclick前面的为null
+			box.onclick = function(){
+
+			}
+
+
+			var title = document.getElementsByName('title')[0];
+			title.onclick = function(){
+
+			}
+			
+		}
+	</script>
+</head>
+<body>
+	<h1>DOM结构（DOM树）</h1>
+	<div id="list">
+		<a href="#">Goole</a>
+		<a href="#" id="baidu">百度</a>
+		<a href="#">360搜索</a>
+	</div>
+</body>
+</html>

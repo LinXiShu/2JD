@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>输出所有1-100之间7的倍数和包含7的数字</title>
+	<script>
+		/*
+			输出所有1-100之间7的倍数和包含7的数字
+		 */
+		var res = '';
+
+		for(var i=1;i<=100;i++){
+			if(i%7===0 || String(i).indexOf(7)>=0){
+				res += i + ', ';
+			}
+		}
+
+		res = res.slice(0,-2);
+
+		console.log(res);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

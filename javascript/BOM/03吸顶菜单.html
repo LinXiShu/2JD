@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>03吸顶菜单</title>
+	<style>
+		body{margin:0;}
+		.login{height:150px;background-color: #fc0;}
+		.header{height:100px;background-color: #58bc58;}
+		.container{
+			height:2000px;background-color: #efefef;
+		}
+		.footer{height:200px;background-color: #f80;}
+		.fixed{position: fixed;left:0;top:0;right:0;}
+		.mgb{margin-bottom:100px;}
+	</style>
+	<script>
+		window.onload = function(){
+			/* 
+				代码执行顺序
+					* window.onload在页面所有资源（标签、图片、链式文件）加载完成后执行
+					* 解决问题：
+						* 加载问题
+						* 全局环境污染
+				* window
+					* 属性
+						* scrollX/scrollY
+					* 方法
+						* scrollTo(x,y)
+						* scrollBy(ox,oy)
+					* 事件
+						* onload
+						* onscroll：窗口滚动条滚动时触发
+						* onresize：窗口大小改变时触发
+
+					* 扩展
+						* className
+			
+				03吸顶菜单
+					* 当滚动条滚动到一定位置时：固定顶部区域
+			 */
+			// var ele = document.getElementById('box');//ele
+			var login = document.getElementsByClassName('login')[0];//[ele]
+			var header = document.getElementsByClassName('header')[0];//[ele]
+
+			console.log(login,header)
+			
+			window.onscroll = function(){
+				// console.log(666)
+				var scrollY = window.scrollY;
+
+				if(scrollY >= 150){
+					header.className = 'header fixed';
+					login.className = 'login mgb';
+				}else{
+					header.className = 'header';
+					login.className = 'login';
+				}
+			}
+
+			window.onresize = function(){
+				console.log(666)
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="login">欢迎来到xxx, <a href="#">登录</a> <a href="#">登录</a></div>
+	<div class="header"></div>
+	<div class="container">
+		laoxie666
+	</div>
+	<div class="footer"></div>
+
+</body>
+</html>

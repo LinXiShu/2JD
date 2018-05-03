@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>04节点操作</title>
+	<script>
+		window.onload = function(){
+			/*
+				节点操作
+					* 创建
+						* 元素  document.createElement()
+						* 文本  document.createTextNode()
+						* 属性  document.createAttribute()
+					* 增
+						* 往页面添加元素
+							* parent.appendChild(node)：在parse最后面添加
+							* parent.insertBefore(new,node) 
+					* 删
+						* 删除页面元素
+					* 查
+						* 获取页面已经存在的元素
+					* 改
+						* 修改内容
+						* 修改属性
+			 */
+			
+
+			
+			// 获取元素
+			var h1 = document.getElementsByTagName('h1')[0];
+			var list = document.getElementById('list');
+			
+			// 创建元素节点
+			var h2 = document.createElement('h2');
+			h2.innerHTML = '元素节点的创建';
+
+			document.body.appendChild(h2);
+
+			var p = document.createElement('p');
+			// p.innerHTML = 'qianfeng.insertBefore(lemon,laoxie)';
+			// 文本节点操作：创建+插入
+			var txt = document.createTextNode('qianfeng.insertBefore(lemon,laoxie)');
+			p.appendChild(txt);
+
+			// 属性节点操作：创建+插入元素
+			// 创建属性节点：属性名
+			var attr = document.createAttribute('id');
+			// 设置节点值：属性值
+			attr.nodeValue = 'article';
+			// 把属性节点插入元素p
+			p.setAttributeNode(attr);
+			
+			// p.id = 'articel';
+
+			// document.body.insertBefore(p,list);
+			list.parentNode.insertBefore(p,list);
+		}
+	</script>
+</head>
+<body>
+	<h1>DOM结构（DOM树）</h1>
+	<div id="list">
+		<a href="#">Goole</a>
+		<a href="#" id="baidu">百度</a>
+		<a href="#">360搜索</a>
+	</div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>08元素属性</title>
+	<script>
+		window.onload = function(){
+			/*
+				08元素节点属性
+					* id
+					* style
+					* name
+					* title
+					* value
+					* checked
+					* tagName === nodeName
+					* innerHTML	内容
+					* innerText
+					* outerHTML	标签本身
+					* outerText
+
+					标准属性（Node<->HTML）
+						* HTML->Node(html结构)
+							html属性影响DOM节点属性：id->id
+						* Node->HTML（js操作）
+							DOM属性影响html属性：title->title
+
+			 */
+			
+			var username = document.getElementById('username');//得到元素节点
+			var output = document.getElementById('output');//得到元素节点
+
+
+			// DOM节点添加标准属性
+			username.title = 'my name is laoxie';
+
+			// dom节点自定义属性
+			username.idx = 666;
+
+			console.log(username.id)
+
+
+			// innerText与innerHTML的区别
+			// output.innerHTML = 'my name is <strong>laoxie</strong>'
+			output.innerText = 'my name is <strong>laoxie</strong>'
+		}
+	
+
+	</script>
+</head>
+<body>
+	<h1>元素节点属性</h1>
+	<input type="text" name="username" id="username" myname="laoxie" tabindex="1">
+	<input type="text" name="nickname" id="nickname" myname="laoxie" tabindex="3">
+	<input type="text" name="url" id="url" myname="laoxie" tabindex="2">
+	<div id="output">输出内容</div>
+</body>
+</html>

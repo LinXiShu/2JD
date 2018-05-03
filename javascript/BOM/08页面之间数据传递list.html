@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>08页面之间数据传递list</title>
+	<style>
+		.goodslist{overflow:hidden;padding: 0;margin:0;list-style: none;}
+		.goodslist li{float:left;padding:10px;margin:10px;border:1px solid #ddd;}
+		.goodslist img{width:200px;}
+		.goodslist .price span{color:#f00;}
+		.goodslist .price span::before{
+			content:'￥';
+		}
+	</style>
+</head>
+<body>
+	<h1>08页面之间数据传递list</h1>
+	<ul id="goodslist" class="goodslist">
+
+	</ul>
+	<script>
+		/*
+			获取元素
+				* 通过id
+				* 通过类名
+				* 通过标签名：getElementsByTagName()
+		 */
+		var data = [{
+	        id:'001',
+	        name:'iphone7 plugs',
+	        imgurl:'img/ip7.jpg',
+	        price:5899.00,
+	        sale:5888.00,
+	        color:'土豪金'
+	    },{
+	        id:'002',
+	        name:'Note7',
+	        imgurl:'img/note7.jpg',
+	        price:3899.00,
+	        sale:998.00,
+	        color:'黑色'
+	    },{
+	        id:'003',
+	        name:'荣耀7',
+	        imgurl:'img/honor7.jpg',
+	        price:1999.00,
+	        sale:1899.00,
+	        color:'白色'
+	    }];
+
+	   var res = data.map(function(goods){
+	    	return '<li>' +
+	    		'<a href="#"><img src="'+ goods.imgurl +'"></a>\n' + 
+	    		'<h4>'+ goods.name +'</h4>\n' + 
+	    		'<p class="color">颜色：'+ goods.color +'</p>\n' + 
+	    		'<p>原价：<del>'+ goods.price +'</del></p>\n' + 
+	    		'<p class="price">现价：<span>'+ goods.sale +'</span></p>' + 
+	    	'</li>'
+	    });
+
+	    // 获取元素
+	    var goodslist = document.getElementById('goodslist');//null
+	    goodslist.innerHTML = res.join('\n');
+
+
+	    // 生成结构后绑定事件
+	   	var list =  goodslist.getElementsByTagName('li');//[li,li,li,li]
+
+	   	// 给每个li绑定事件
+	   	// for循环花费事件：0.1s
+	   	for(var i=0;i<list.length;i++){
+	   		(function(i){
+	   			// var i
+		   		list[i].onclick = function(){
+		   			// 获取对应商品信息
+		   			// 当这里的代码执行时，for循环已经执行完
+
+		   			// 获取当前li下的a
+		   			// var link = this.getElementsByTagName('a')[0];
+
+		   			// {id:'001', name:'荣耀7',imgurl:'img/honor7.jpg',} -> id=001&name='荣耀7'&imgurl=img/honor7.jpg
+
+		   			var params = '';
+		   			var goods = data[i];
+		   			for(var key in goods){
+		   				params += key + '=' + encodeURI(goods[key]) + '&';
+		   			}
+
+		   			// 去除多余&
+		   			params = params.slice(0,-1);
+
+		   			location.href = '08goods.html?' + params;
+
+		   			// link.href = 'goods.html?'+params;
+		   		}
+	   		})(i);
+	   	}
+	   	// console.log('i:',i);
+
+	    console.log(list)
+	</script>
+</body>
+</html>

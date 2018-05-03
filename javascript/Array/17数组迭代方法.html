@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>17数组迭代方法</title>
+	<script>
+		/*
+			数组ES5
+				* 数组迭代方法
+					* forEach(fn)
+					* map(fn)
+					* filter(fn)：保留fn返回true时的数组元素
+					* some(fn)
+					* every(fn)
+						* fn
+							* item：数组元素
+							* idx：索引值
+							* arr：对数组的引用
+		 */
+		
+		var arr = ['laoxie','lemon','pangtian','dk'];
+
+
+		arr.forEach(function(item){
+			console.log(item)
+		});
+
+
+		// 
+		var price = [9.9,12,66,998,98,120,250,69,79,198,188,369];
+		// var price = [{name:'iphoneX',price:5998}];
+
+		// var res = [];
+		// for(var i=0;i<price.length;i++){
+		// 	if(price[i]<100){
+		// 		res.push(price[i]);
+		// 	}
+		// }
+		// console.log(res);
+
+		// 找出价格小于100的商品
+		var res = price.filter(function(item,idx){
+			return item>=100&&item<=200;
+		});
+
+		console.log(res);
+
+
+		var arr3 = [10,16,20,30,66,12,8];
+
+		// 判断数组arr3中是否有大于30的数
+		var res3 = arr3.some(function(item,idx){
+			return item > 30;
+		});
+
+		console.log(res3)
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

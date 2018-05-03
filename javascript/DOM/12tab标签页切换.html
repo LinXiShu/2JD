@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>12tab标签页切换</title>
+	<style>
+		.tab{border:2px solid #ddd;padding:2px;width:353px;}
+		.tab header{padding-bottom:2px;border-bottom:2px solid #ddd;overflow:hidden;}
+		.tab header div{float:left;padding:5px 15px;border-right:1px solid #ddd;}
+		.tab .active{background-color: #fc0;color:#fff;}
+		.tab .content{padding:15px;min-height: 100px;}
+	</style>
+	<script>
+		window.onload = function(){
+			/*
+				tab标签切换
+					思路：
+						1）初始化
+							* 高亮第一个tab
+							* 隐藏除第一张以外的图片
+						2）切换：鼠标点击tab（关键：获取点击的index值）
+							* 高亮显示当前tab,去除其他高亮
+							* 切换相应的图片，隐藏其他图片
+
+					* 如何实现鼠标移入一定时间后切换
+					* 自动切换
+					* 鼠标移入移出
+			 */
+			
+			// 获取元素
+			var tab = document.getElementsByClassName('tab')[0];
+			var tabItems = tab.children[0].children;
+			var tabContent = tab.children[1].children;
+
+			var index = 0;
+
+			var timer = setInterval(atuoPlay,2000);
+
+			// 鼠标移入移除效果
+			tab.onmouseover = function(){
+				clearInterval(timer);
+			}
+
+			tab.onmouseout = function(){
+				timer = setInterval(atuoPlay,2000);
+			}
+			
+			// 1）初始化
+			for(var i=0;i<tabItems.length;i++){
+				if(i===0){
+					// * 高亮第一个tab
+					tabItems[i].className = 'active';
+				}else{
+					// * 隐藏除第一张以外的图片
+					tabContent[i].style.display = 'none';
+				}
+
+				// 2）切换：鼠标点击tab（关键：获取点击的index值）
+				(function(i){
+					var timer
+					tabItems[i].onmouseover = function(){
+						timer = setTimeout(function(){
+							index = i;
+							show(i);
+						},500);
+						
+					}
+
+					tabItems[i].onmouseout = function(){
+						clearTimeout(timer);
+					}
+				})(i);
+			}
+
+
+			function show(idx){
+				for(var j=0;j<tabItems.length;j++){
+					// * 高亮显示当前tab,去除其他高亮
+					// * 切换相应的图片，隐藏其他图片
+					if(j===idx){
+						tabItems[j].className = 'active';
+						tabContent[j].style.display = 'block';
+						
+					}else{
+						tabItems[j].className = '';
+						tabContent[j].style.display = 'none';
+					}
+
+				}
+			}
+
+			function atuoPlay(){
+				index++;
+
+				// 避免index超出范围
+				if(index>=tabItems.length){
+					index = 0
+				}
+
+				show(index);
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="tab">
+		<header>
+			<div>Tab1</div>
+			<div>Tab2</div>
+			<div>Tab3</div>
+			<div>Tab4</div>
+			<div>Tab5</div>
+		</header>
+		<div class="content">
+			<div><img src="img/g1.jpg"></div>
+			<div><img src="img/g2.jpg"></div>
+			<div><img src="img/g3.jpg"></div>
+			<div><img src="img/g4.jpg"></div>
+			<div><img src="img/g5.jpg"></div>
+		</div>
+	</div>
+</body>
+</html>

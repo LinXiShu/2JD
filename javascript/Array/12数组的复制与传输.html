@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>12数组的复制与传输</title>
+	<script>
+		/*
+			12数组的复制与传输
+		 */
+		
+		var myname = 'laoxie';
+
+		// 复制字符串(成功)
+		var realname = myname;
+
+		realname += '666';
+
+
+
+		var arr = [10,20,30];
+
+		// 复制数组（失败）
+		// 复制引用
+		var arr_copy = arr;
+
+		arr_copy.push(666);
+
+
+		// 先创建新数组
+		// 逐个写入
+		var arr_copy2 = [];
+		for(var i=0;i<arr.length;i++){
+			arr_copy2[i] = arr[i];
+		}
+
+		arr_copy2.push('laoxie');
+
+		var arr_copy3 = arr.slice(0);
+
+		console.log(arr.join());
+
+		function render(a){
+			// var a = arr;
+			a.splice(1,0,11,12,13);
+
+			console.log(a.join());
+		}
+
+		render(arr);
+	</script>
+</head>
+<body>
+	<h1>12数组的复制与传输</h1>
+</body>
+</html>

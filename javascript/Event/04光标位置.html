@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>05光标位置</title>
+	<style>
+		body{padding-top:1500px;}
+		.pos{position:fixed;left:0;bottom:0;padding:10px;font-size:12px;color:#999;}
+	</style>
+	<script>
+		window.onload = function(){
+			/*
+				event{}
+					* clientX/clientY : 光标距离浏览器<可视区域>的位置
+					* screenX/screenY :光标距离电脑屏幕的位置
+					* pageX/pageY: clientX+scrollX,clientY+scrollY（IE8-不支持）
+
+				获取html：document.documentElement
+			 */
+			
+			var pos = document.getElementsByClassName('pos')[0];//[div]
+			
+			document.onmousemove = function(e){
+				e = e || windown.event;
+
+				// pageX/pageY兼容IE8
+				if(e.pageX === undefined){
+					e.pageX = e.clientX + window.scrollX;
+				}
+
+				if(e.pageY === undefined){
+					e.pageY = e.clientY + window.scrollY;
+				}
+
+				// console.log(e.clientX,e.clientY);
+				pos.innerHTML = '<p>client:'+e.clientX+','+e.clientY+'</p>'+
+								'<p>screen:'+e.screenX+','+e.screenY+'</p>'+
+								'<p>page:'+e.pageX+','+e.pageY+'</p>';
+			}
+			
+
+		}
+	</script>
+</head>
+<body>
+	<div class="pos">
+	</div>
+</body>
+</html>

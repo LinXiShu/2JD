@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>写一个map(arr)函数，把数组中的每一个数字都增加20%，并返回新的数组</title>
+	<script>
+		/*
+			写一个map(arr)函数，把数组中的每一个数字都增加20%，并返回新的数组
+				* 封装函数map
+				* 创建新数组，用于存放结果
+				* 遍历数组，把每一项增值1.2倍
+		 */
+		
+		 var arr = [10,15,2,32,5,4,20,8,48,54,6];
+
+		 function map(a){
+		 	// var a = arr;
+
+		 	// 创建新数组
+		 	var res = [];
+
+		 	for(var i=0;i<a.length;i++){
+		 		res[i] = a[i]*1.2;
+		 	}
+
+		 	return res;
+		 }
+
+		 map(arr);//[12,18,2.4....]
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

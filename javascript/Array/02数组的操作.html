@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>02数组的操作</title>
+	<script>
+		/*
+			02数组的操作
+				* 增：增加
+				* 删：删除
+				* 查：读取
+				* 改：修改
+
+				* 遍历（循环）
+
+			数组属性：
+				* length：获取数组元素的数量
+			索引：
+				* 从0开始的正整数
+		 */
+
+		 // 创建空数组
+		 var arr = [10];//
+
+		 // 增加一个数组元素（任意数据类型）
+		 arr[1] = 11;
+		 arr[2] = 12;
+
+		 // delete
+
+		 // 查
+		 var res = arr[2];
+
+		 // 改：修改原有的值
+		 // 重新赋值
+		 arr[1] = 110;
+
+
+		 console.log(arr,res);
+
+
+		 // 数组遍历
+		 var arr2 = [10,20,30,40,50,60,70,80,90];
+
+		 // 求和：遍历
+		 var res2 = 0;
+		 for(var i=0;i<arr2.length;i++){
+		 	// i=0,i=1...i=arr.length-1
+		 	console.log(arr2[i]);
+
+		 	res2 = res2 + arr2[i];
+		 }
+
+		 // 
+		 console.log('求和：'+res2);
+		
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

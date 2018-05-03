@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>09盒模型属性</title>
+	<style>
+	body{margin:20px;position: relative;}
+		#box{width:200px;height:100px;margin:30px;padding:10px;border:10px solid #f60;}
+		.container{width:400px;height:200px;overflow: auto;}
+		.container .content{width:2000px;height:1000px;background-color: #666;}
+	</style>
+	<script>
+		/*
+			09盒模型属性
+				* offset
+					* offsetWidth
+					* offsetHeight
+					* offsetTop		当前元素离<定位父级>元素顶部的距离（无定位父级，则相对与根元素）。
+					* offsetLeft	当前元素离<定位父级>元素左侧的距离。
+				* scroll
+					* scrollLeft	元素水平滚动条滚动过的距离
+					* scrollTop		元素垂直滚动条滚动过的距
+		 */
+	</script>
+</head>
+<body>
+	<div id="box">
+		我们不一样...
+	</div>
+
+	<div class="container" id="container">
+		<div class="content"></div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>06使用定时器实现进度条效果</title>
+	<style>
+		#bar{position:absolute;top:0;left:0;width:0;height:5px;background-color: #58bc58;}
+		#percent{position: absolute;left:50%;top:8px;transform:translate(-50%,0);font-size:10px;}
+	</style>
+	
+</head>
+<body>
+	<div id="bar">
+		<span id="percent"></span>
+	</div>
+	<script>
+		/*
+			使用定时器实现进度条效果
+				* 不断改变宽度
+				* 设置定时器：setInterval(fn,duration)
+				* 清除定时器：clearInterval(timer)
+
+				* 浏览器窗口可视区域的宽高
+					* window.innerWidth
+					* window.innerHeight
+		 */
+		
+		var bar = document.getElementById('bar');
+		var percent = document.getElementById('percent');
+		
+		// 进度条初始宽度
+		var width = 0;
+
+		var target = window.innerWidth;
+
+		var timer = setInterval(function(){
+			width += 3;
+
+			// 计算百分比
+			var per = width/target*100;
+
+			if(width>=target){
+				clearInterval(timer);
+
+				// 清除定时器后重置width为目标值
+				width = target;
+
+				// 重置百分比
+				per = 100;
+			}
+
+			// 设置进度条的宽度
+			bar.style.width = width + 'px';
+
+			// 显示百分比
+			percent.innerHTML = per.toFixed(1) + '%';
+		},30);
+
+		console.log(timer)
+	</script>
+</body>
+</html>

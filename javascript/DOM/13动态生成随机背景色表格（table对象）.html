@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>13动态生成随机背景色表格（table对象）</title>
+	<style>
+		table{border:1px solid #ddd;border-collapse: collapse;}
+		td,th{border:1px solid #ddd;padding:5px 10px;}
+	</style>
+	<script src="../common.js"></script>
+	<script>
+		window.onload = function(){
+			/*
+				动态生成随机背景色表格（table对象）
+					* insertRow(index) 在表格中插入一个新行。
+					* insertCell(index) 在一行中的指定位置插入一个空的列
+
+				table的作用：展示数据
+			 */
+			var row = document.getElementById('row');
+			var col = document.getElementById('col');
+			var btnCreate = document.getElementById('btnCreate');
+			var output = document.getElementById('output');
+
+
+			btnCreate.onclick = function(){
+				var _row = row.value;
+				var _col = col.value;
+
+				// 创建一个表格元素节点
+				// table对象
+				var table = document.createElement('table');
+
+				// 外层循环控制行
+				for(var i=0;i<_row;i++){
+					//在i位置插入一行，返回一个tr对象
+					var tr = table.insertRow(i);
+					tr.style.backgroundColor = randomColor(16);
+					for(var j=0;j<_col;j++){
+						//在i位置插入一个单元格，返回一个td对象
+						var td = tr.insertCell(j);
+						td.innerText = '单元格'+i+j
+					}
+				}
+
+				// 添加前先清空
+				output.innerText = '';
+
+				// 把table写入#output
+				output.appendChild(table);
+
+			}
+		}
+	</script>
+</head>
+<body>
+	<h1>动态生成随机背景色表格（table对象）</h1>
+	<label for="row">行：</label>
+	<input type="text" id="row" name="row">
+	<label for="col">列：</label>
+	<input type="text" id="col" name="col">
+	<button id="btnCreate">生成表格</button>
+	<div id="output"></div>
+
+	<table id="data">
+		<thead>
+			<tr>
+				<th>标题</th>
+				<th>标题</th>
+				<th>标题</th>
+				<th>标题</th>
+				<th>标题</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr><!--rowIndex:1,sectionRowIndex:0-->
+				<td>xx</td>
+				<td>xx</td>
+				<td>xx</td>
+				<td>xx</td>
+				<td>xx</td>
+			</tr>
+			<tr>
+				<td>xx</td>
+				<td>xx</td>
+				<td>xx</td>
+				<td>xx</td>
+				<td>xx</td>
+			</tr>
+			<tr>
+				<td>xx</td>
+				<td>xx</td>
+				<td>xx</td>
+				<td>xx</td>
+				<td>xx</td>
+			</tr>
+			<tr>
+				<td>xx</td>
+				<td>xx</td>
+				<td>xx</td>
+				<td>xx</td>
+				<td>xx</td>
+			</tr>
+			<tr>
+				<td>xx</td>
+				<td>xx</td>
+				<td>xx</td>
+				<td>xx</td>
+				<td>xx</td>
+			</tr>
+		</tbody>
+		<tbody>
+			<tr><!--rowIndex:6,sectionRowIndex:0-->
+				<td>xx</td>
+				<td>xx</td>
+				<td>xx</td>
+				<td>xx</td>
+				<td>xx</td>
+			</tr>
+			<tr>
+				<td>xx</td>
+				<td>xx</td>
+				<td>xx</td>
+				<td>xx</td>
+				<td>xx</td>
+			</tr>
+			<tr>
+				<td>xx</td>
+				<td>xx</td>
+				<td>xx</td>
+				<td>xx</td>
+				<td>xx</td>
+			</tr>
+			<tr>
+				<td>xx</td>
+				<td>xx</td>
+				<td>xx</td>
+				<td>xx</td>
+				<td>xx</td>
+			</tr>
+			<tr>
+				<td>xx</td>
+				<td>xx</td>
+				<td>xx</td>
+				<td>xx</td>
+				<td>xx</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

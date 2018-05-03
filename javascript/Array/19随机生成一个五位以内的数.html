@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>随机生成一个五位以内的数</title>
+	<style>
+		.num{color:#f00;}
+	</style>
+</head>
+<body>
+	<h1>随机生成一个五位以内的数，然后输出该数共有多少位，每位分别是什么</h1>
+	<div id="output"></div>
+	<script>
+		/*
+			随机生成一个五位以内的数，然后输出该数共有多少位，每位分别是什么
+		 */
+		
+		var num = parseInt(Math.random()*100000);//12345,1234,123,12,1 =>[万,千,百,十,个]
+		console.log(num);
+
+		// 创建一个res数组，用于存放各位到万位的数字
+		var res = [];
+		var str = ['个','十','百','千','万'];
+
+		// 分别拿出每一位数字，并做出排列[个,十,百,千,万],[个,十],[个]
+		for(var i=1;i<=num;i*=10){//1=>10=>100=>1000=>10000
+			var n = parseInt(num/i)%10;
+
+			// 写入res数组
+			res.push(n);
+		}
+
+		// console.log(res);
+		var show = '<span class="num">' + num + '</span>一共有'+ res.length + '位，分别是：'
+		for(var i=0;i<res.length;i++){
+			show += str[i] + '位:' + res[i] + ', ';
+		}
+
+		document.getElementById('output').innerHTML = show;
+
+	</script>
+</body>
+</html>

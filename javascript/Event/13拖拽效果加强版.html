@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>13拖拽效果加强版</title>
+	<style>
+		#box{position:absolute;left:0;top:0;padding:20px;background-color: #fc0;text-align:center;}
+	</style>
+	<script>
+		window.onload = function(){
+			/*
+				拖拽：按下鼠标并移动
+					* mousedown
+					* mousemove
+					* mouseup
+				原理：不断改变top,left
+			 */
+			var box = document.getElementById('box')
+			// console.log(box)
+
+			box.onmousedown = function(e){
+				// 按下时记录按下位置
+				// var ox = e.offsetX;
+				// var oy = e.offsetY;
+				var ox = e.clientX - box.offsetLeft;
+				var oy = e.clientY - box.offsetTop;
+
+				document.onmousemove = function(evt){
+
+					box.style.left = evt.clientX - ox + 'px';
+					box.style.top = evt.clientY - oy + 'px';
+
+
+					// 阻止图片的默认行为
+					evt.preventDefault();
+				}
+
+				e.preventDefault();
+			}
+
+
+			// 鼠标松开，清除mousemove事件
+			document.onmouseup = function(){
+				document.onmousemove = null;
+			}
+
+		}
+	</script>
+</head>
+<body>
+	<div id="box">
+		<img src="img/big_4.jpg">
+	</div>
+</body>
+</html>

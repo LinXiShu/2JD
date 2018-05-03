@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01全局作用域</title>
+	<style>
+		body{overflow: hidden;}
+		.tengxun{position: absolute;top:0;left:0;right:0;bottom:0;width:100%;height:100%;}
+	</style>
+	<script>
+		/*
+			BOM
+				* window对象：{x,y,z...,num}
+					* name
+					* top
+				* 全局作用域
+					* 定义在全局环境下的变量都会成为window对象的属性
+						* 容易产生冲突：尽量避免在全局环境下声明变量（避免全局环境污染）
+					* 把变量定义在函数体里，可以有效减少全局环境下的变量冲突，避免污染全局环境
+					* 在函数内部不用var声明的变量会成为全局变量，即window对象的属性
+					* window可省略
+						* 全局方法、全局对象可省略window
+						* 事件、属性不建议省略
+		 */
+		
+		(function(){
+			var num = 100;
+
+			var name = 666;
+			// window.name = 888;
+
+			console.log(num);
+
+			myname = 'laoxie';
+
+			// document
+			
+		})();
+
+
+		
+		var num = 10;
+		title = 'Web';
+		
+	</script>
+</head>
+<body>
+	<!-- <iframe src="http://www.qq.com" class="tengxun"></iframe> -->
+	<!-- <iframe src="http://www.baidu.com" frameborder="0"></iframe> -->
+</body>
+</html>

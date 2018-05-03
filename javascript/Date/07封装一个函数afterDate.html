@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>封装一个函数afterDate(date,n)，得到日期date的n天后的日期</title>
+	<script>
+		/*
+			封装一个函数afterDate(date,n)，得到日期date的n天后的日期
+				* 封装函数afterDate
+				* 返回一个时间
+		 */
+		
+		// 2018-4-20
+		// 2
+		var afterDate = function(date,n){
+			// 以指定日期生成时间对象
+			date = new Date(date);
+
+			date.setDate(date.getDate()+n);
+
+			// date.getTime()+1000*60*60*24*n
+
+			// return date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate();
+			return date.toLocaleDateString();
+		}
+	</script>
+</head>
+<body>
+	<h1>封装一个函数afterDate(date,n)，得到日期date的n天后的日期</h1>
+</body>
+</html>

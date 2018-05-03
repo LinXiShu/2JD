@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>06打开与关闭窗口</title>
+	<script>
+		window.onload = function(){
+			/*
+				打开与关闭窗口
+					* open()	浏览器默认拦截open打开的窗口
+					* close()
+
+			 */
+			
+			for(var i=0;i<5;i++){
+				var top = parseInt(Math.random()*500);
+				var left = parseInt(Math.random()*500);
+				var width = parseInt(Math.random()*500);
+				var height = parseInt(Math.random()*500);
+				// open('http://www.baidu.com','bd'+i,'width='+width+',height='+height+',top='+top+',left='+left+'')
+				
+			}
+
+			// close();
+
+			document.getElementById('btnPrint').onclick = function(){
+				print();
+			}
+			
+		}
+	</script>
+</head>
+<body>
+	
+	<button id="btnPrint">打印</button>
+</body>
+</html>

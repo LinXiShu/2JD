@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>[案例]显示5条最新消息</title>
+	<style>
+		h1{text-align: center;}
+		.news-list{border:2px solid #ddd;border-radius: 10px;width:600px;margin:0 auto;padding:10px;}
+		.news-list h4{margin:0 0 10px;padding-bottom:10px;border-bottom:1px solid #ddd;}
+		.news-list ul{padding:0;margin:0;list-style:none;line-height:2;}
+
+		.form{margin:100px auto 0;width:600px;text-align:center;overflow:hidden;}
+		.form input{float:left;width:480px;height:50px;box-sizing: border-box;padding:10px;}
+		.form button{float:left;width:120px;height:50px;}
+	</style>
+
+</head>
+<body>
+	<h1>显示10条最新消息</h1>
+	<div class="news-list">
+		<h4>最新消息</h4>
+		<ul id="newsList"></ul>
+	</div>
+
+	<div class="form">
+		<input type="text" id="news"><button id="btnAdd">添加</button>
+	</div>
+	<script>
+
+		/*
+			显示10条最新消息
+			思路：
+				1)获取到页面元素
+				2)把新闻写入页面
+				3)添加新闻
+					给按钮绑定点击事件
+					给newsList数组添加新的新闻
+					更新页面上的新闻列表
+		 */
+		var newslist = ['小明由于调戏女老师再次被滚粗教室','iPhone10发布,屏幕高度亮瞎了所有小伙伴','为了弘扬乐于助人的精神，中国人大开会决定授予老王“中国好邻居”称号'];
+
+		// 1)获取到页面元素
+		var newsList = document.getElementById('newsList');
+		var news = document.getElementById('news');
+		var btnAdd = document.getElementById('btnAdd');
+
+
+		// 2)把新闻写入页面
+		newsList.innerHTML = render(newslist);
+
+
+		// 3)添加新闻
+		btnAdd.onclick = function(){
+			// 获取输入的信息
+			var _news = news.value;
+
+			newslist.unshift(_news);
+
+			newsList.innerHTML = render(newslist);
+
+			// 清空并自动获得焦点
+			news.value = '';
+			news.focus();
+		}
+
+		function render(arr){
+			arr.length = 10;
+			return arr.map(function(msg){
+				return '<li><a href="#">'+msg+'</a></li>'
+			}).join('\n');
+		}
+		
+	</script>
+</body>
+</html>

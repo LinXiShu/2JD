@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>11数组方法排序</title>
+	<script>
+		/*
+			数组方法排序
+				* sort(fn)
+					* 默认字符串排序
+					* 可传入fn函数用于告诉sort方法如何排序
+		 */
+		
+		// var arr = [2,10,8,18,9,11,16,19,20,30,32,55]
+		var arr = [10,2,8,55,32,18,9,11,30,16,19,20];
+		console.log(arr);
+
+		var res = arr.sort(function(a,b){
+			// console.log(a,b);
+			// 在此告诉sort如何排列a,b
+			// * 如果 return 整数：告诉sort方法，a大于b
+			// * 如果 return 负数：告诉sort方法，a小于b
+			// * 如果 return 0：告诉sort方法，a等于b
+			// if(a>b){
+			// 	return 1
+			// }else if(a<b){
+			// 	return -1
+			// }else{
+			// 	return 0
+			// }
+
+			return a-b;
+		});
+		console.log(res);
+	</script>
+</head>
+<body>
+	<h1>数组方法排序</h1>
+</body>
+</html> 

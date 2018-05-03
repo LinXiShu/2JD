@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01匹配规则</title>
+	<script>
+		var reg = /baidu/;
+
+		var str = 'baidu666 google yahoo 360 sousou sougou 123';
+
+		// var res = str.search(res);//0
+		// /\d{3}/g
+		var res = str.match(new RegExp('\\d{3}','g'));
+		console.log(res);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

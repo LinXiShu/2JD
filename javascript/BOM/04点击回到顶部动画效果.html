@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>点击回到顶部动画效果</title>
+	<style>
+		.toTop{
+			position: fixed;right:15px;bottom:50px;
+			padding:10px 15px;background-color: #f90;color:#fff;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			/*
+				点击回到顶部动画效果
+					* 滚动条
+			 */
+
+			 var btnTop = document.getElementsByClassName('toTop')[0];
+
+			 btnTop.onclick = function(){
+			 	
+
+			 	var timer = setInterval(function(){
+			 		// 获取滚动条滚动过的距离
+			 		var scrollY = window.scrollY;//3000(300)--> 100(10)
+
+			 		var speed = Math.ceil(scrollY/10);//缓存动画
+
+			 		scrollBy(0,-speed);
+			 		if(window.scrollY<=0 || speed < 5){
+			 			clearInterval(timer);
+
+			 			// 重置
+			 			scrollBy(0,0);
+			 		}
+			 	},20)
+			 }
+			
+		}
+		for(var i=0;i<1000;i++){
+			document.write('<p>我叫你'+i+'声逗比你敢答应吗</p>');
+		}
+	</script>
+</head>
+<body>
+	<div class="toTop">返回顶部</div>
+</body>
+</html>

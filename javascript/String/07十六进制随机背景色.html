@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>07十六进制随机背景色.html</title>
+
+</head>
+<body>
+	<h1>07十六进制随机背景色.html</h1>
+	<script>
+		/*
+			07十六进制随机背景色.html
+		 */
+		var str = '0123456789abcdef';
+
+		var color = '#';
+
+		for(var i=0;i<6;i++){
+			// 随机获取一个字符
+			var idx = parseInt(Math.random()*str.length);
+			color += str[idx];
+		}
+
+		// 给body添加随机背景颜色
+		// js修改css样式（内联样式）
+		document.body.style.backgroundColor = color;
+		
+	</script>
+</body>
+</html>

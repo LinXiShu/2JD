@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>04新闻提示信息</title>
+	<style>
+		#box{width:0;height:0;border:30px solid transparent;border-left-width:20px;border-right-width:20px;border-bottom-color:#58bc58;}
+		.details{display:none;position:absolute;padding:10px;width:200px;border:1px solid #f60;background-color: #ffc;}
+		.details::before,.details::after{
+			content:'';
+			position:absolute;top:-20px;left:15px;
+			border:10px solid transparent;border-bottom-color:#f60;
+		}
+		.details::after{top:-18px;border-bottom-color:#ffc;}
+	</style>
+	<script>
+		window.onload = function(){
+			/*
+				跟随鼠标的新闻提示
+					* 跟随光标
+						* pageX/pageY
+					* 鼠标移入
+						* 把title属性值写入.details
+						* 显示.details
+					* 鼠标移出
+						* 隐藏.details
+					* 鼠标移动
+						* 设置top,left
+			 */
+			var newslist = document.getElementsByClassName('newslist')[0];
+			var links = newslist.getElementsByTagName('a');
+			var details = document.getElementsByClassName('details')[0];
+
+			
+			for(var i=0;i<links.length;i++){
+				links[i].onmouseover = function(){
+					// 把title属性值写入.details
+					details.innerText = this.title;
+					details.style.display = 'block';
+
+					// 把title信息存入一个节点属性
+					this.detail = this.title;
+
+					this.title = '';
+
+					console.log('over')
+				}
+
+				links[i].onmouseout = function(){console.log('out')
+					// 隐藏.details
+					details.style.display = 'none';
+
+					// 还原title属性
+					this.title = this.detail;
+				}
+
+				// 跟随鼠标效果
+				links[i].onmousemove = function(e){
+					e = e || window.event;
+					// * 设置top,left
+
+					details.style.left = e.pageX - 30 + 'px';
+					details.style.top = e.pageY + 30 + 'px';
+
+				}
+
+			}
+		}
+	</script>
+</head>
+<body>
+	<h1>新闻提示信息</h1>
+	<ul class="newslist">
+		<li><a href="#" title="小明由于调戏女老师再次被滚粗教室">教室文化</a></li>
+		<li><a href="#" title="iPhone10发布,屏幕高度亮瞎了所有小伙伴">iphone10发布会</a></li>
+		<li><a href="#" title="为了弘扬乐于助人的精神，中国人大开会决定授予老王“中国好邻居”称号">关于老王</a></li>
+	</ul>
+	<div class="details"></div>
+	<div id="box"></div>
+</body>
+</html>

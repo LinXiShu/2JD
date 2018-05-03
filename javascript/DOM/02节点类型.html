@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>节点类型</title>
+	<script>
+		window.onload = function(){
+			/*
+				节点Node
+
+					* 节点类型 			nodeType
+						* 元素节点		1
+						* 文本节点		3
+						* 属性节点		2
+						* document		9
+					* 节点类型判断
+						* nodeType
+
+			 */
+			
+			var list = document.getElementById('list');//获取div元素
+			console.log(list.nodeType);//1
+			
+		}
+	</script>
+</head>
+<body>
+	<h1>DOM结构（DOM树）</h1>
+	<div id="list">
+		<a href="#">Goole</a>
+		<a href="#" id="baidu">百度</a>
+		<a href="#">360搜索</a>
+	</div>
+</body>
+</html>

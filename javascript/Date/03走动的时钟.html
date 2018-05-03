@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>走动的时间</title>
+	
+</head>
+<body>
+	<h1>走动的时间</h1>
+	<time id="time"></time>
+	<script>
+		/*
+			时间定义
+				* 构造函数
+					* 不带参数：new Date() ->得到运行这行代码时的时间
+			* 时间组成部分
+				* 年、月、日
+				* 时、分、秒、毫秒、微秒
+				* 星期、时区
+			* 获取
+				* getFullYear()
+				* getMonth()	获取月份是从0开始的
+				* getDate()
+				
+				* getHours()
+				* getMinutes()
+				* getSeconds()
+
+			* 定时器
+				* setInterval(fn,duration)
+					* fn 每隔duration时间执行一次fn
+					* duration：毫秒
+		 */
+		function showTime(){
+			// 得到运行这行代码时的时间
+			var d = new Date();//Fri Apr 20 2018 09:24:28 GMT+0800 (中国标准时间)
+		
+			var year = d.getFullYear();
+			var month = d.getMonth()+1;
+			var date = d.getDate();
+
+			var hours = d.getHours();
+			var min = d.getMinutes();
+			var sec = d.getSeconds();
+
+			// 补0操作
+			hours = hours<10 ? '0'+hours : hours;
+			min = min<10 ? '0'+min : min;
+			sec = sec<10 ? '0'+sec : sec;
+
+			var res = year + '-' + month + '-' + date + ' ' + hours + ':' + min + ':' + sec;//2018-4-20
+
+			console.log(year,month,date);//2018
+			console.log(res);
+
+			document.getElementById('time').innerHTML = res;
+		}
+		
+		showTime();
+		setInterval(showTime,1000);
+	</script>
+</body>
+</html>

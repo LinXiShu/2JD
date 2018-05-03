@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>根据数据生成一个商品列表</title>
+	<style>
+		.goodslist img{width:200px;}
+		.goodslist .price span{color:#f00;}
+		.goodslist .price span::before{
+			content:'￥';
+		}
+	</style>
+</head>
+<body>
+	<h1>根据数据生成一个商品列表</h1>
+	<div id="goodslist" class="goodslist">
+
+	</div>
+	<script>
+		var data = [{
+	        id:'001',
+	        name:'iphone7 plugs',
+	        imgurl:'img/ip7.jpg',
+	        price:5899.00,
+	        sale:5888.00,
+	        color:'土豪金'
+	    },{
+	        id:'002',
+	        name:'Note7',
+	        imgurl:'img/note7.jpg',
+	        price:3899.00,
+	        sale:998.00,
+	        color:'黑色'
+	    },{
+	        id:'003',
+	        name:'荣耀7',
+	        imgurl:'img/honor7.jpg',
+	        price:1999.00,
+	        sale:1899.00,
+	        color:'白色'
+	    }];
+
+
+	    // 根据数据生成商品列表
+	    // 字符串拼接
+	    // <ul><li><h4></h4><img><p></p><p>
+
+	    // 遍历
+	    var content = '<ul>'
+	    for(var i=0;i<data.length;i++){
+	    	// data[i] 每一个商品对象
+	    	// 拼接li
+	    	content += '<li>' +
+	    		'<img src="'+ data[i].imgurl +'">' + 
+	    		'<h4>'+ data[i].name +'</h4>' + 
+	    		'<p class="color">颜色：'+ data[i].color +'</p>' + 
+	    		'<p>原价：<del>'+ data[i].price +'</del></p>' + 
+	    		'<p class="price">现价：<span>'+ data[i].sale +'</span></p>' + 
+	    	'</li>'
+	    }
+
+	    // 闭合ul
+	    content += '</ul>';
+
+	    // 获取元素
+	    var goodslist = document.getElementById('goodslist');//null
+	    goodslist.innerHTML = content;
+
+	    console.log(content)
+	</script>
+</body>
+</html>

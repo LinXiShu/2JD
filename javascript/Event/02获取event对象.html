@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>02获取event对象</title>
+	<style>
+		.box{width:200px;height:100px;background-color: #ffc;border:5px solid #f60;}
+	</style>
+	
+</head>
+<body>
+	<div class="box" id="box"></div>
+	<script>
+		(function(){
+			/*
+				获取event对象
+					* 标准：事件处理函数的第一个参数
+					* IE8-: 事件发生时window.event
+			 */
+			var box = document.getElementById('box');
+
+			// 鼠标事件获取event
+			box.onmouseup = function(event){
+				// if(event){
+				// 	event = event;
+				// }else{
+				// 	event = window.event;
+				// }
+
+				// event = event ? event : window.event;
+
+				// 如何event转成boolean为true,则使用event
+				// 否则使用window.event;
+				event = event || window.event;
+
+				console.log(event);
+			}
+
+		})()
+
+		function getEvent(event){
+			if(event==null){
+				return window.event;
+			}else{
+				return event;
+			}
+		}
+	</script>
+</body>
+</html>

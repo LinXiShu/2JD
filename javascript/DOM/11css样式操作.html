@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>11css样式操作</title>
+	<style>
+		.box{font-size:30px;}
+		.box::first-letter{
+			color:#f00;font-size:60px;
+		}
+	</style>
+	<script src="../common.js"></script>
+	<script>
+		window.onload = function(){
+			/*
+				style：获取/设置内联样式
+				getComputedStyle(ele,pseudo)	获取ele的所有终极（计算权重后的）样式
+			 */
+			var box = document.getElementById('box');
+
+			// 设置高度
+			box.style.height = '100px';
+			box.style.backgroundColor = '#ff0';
+
+
+			// var css = getComputedStyle(box,'::first-letter');
+			// console.log(css.fontSize)
+			// console.log(css['background-color'])
+			// console.log(box.currentStyle.fontSize)
+
+			console.log(getCss(box,'fontSize'));
+		}
+	</script>
+</head>
+<body>
+	<div class="box" id="box">
+		style
+	</div>
+</body>
+</html>

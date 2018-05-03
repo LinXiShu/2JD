@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>商品详情</title>
+	<script>
+		window.onload = function(){
+			/*
+				接收传过来的数据
+					* encodeURI		中文->%E9%BB%91%E8%89%B
+					* decodeURI		%E9%BB%91%E8%89%B->中文
+			 */
+			
+			var params = location.search;//?id=002&name=Note7&imgurl=img/note7.jpg&price=3899&sale=998&color=%E9%BB%91%E8%89%B2
+
+			// 去除?
+			params = params.slice(1);
+
+			// string->object
+			params = params.split('&');//[id=002,name=Note7]
+
+			var goods = {}
+			params.forEach(function(item){
+				// 拆分属性名/属性值
+				var arr = item.split('=');//[id,002], [name,Note7]
+
+				// 把属性名和属性值写入对象goods
+				goods[arr[0]] = decodeURI(arr[1]);
+			});
+
+			console.log(goods);
+
+
+			var html = '<img src="'+goods.imgurl+'">'+
+						'<h1>'+goods.name+'</h1>' + 
+						'<p class="old-price">原价：<del>'+goods.price+'</del></p>' + 
+						'<p class="price">现价：<span>'+goods.sale+'</span></p>' + 
+						'<p class="color">颜色：<span>'+goods.color+'</span></p>';
+
+			// 写入页面
+			document.getElementsByClassName('goods')[0].innerHTML = html;
+			// console.log(params)
+			
+		}
+	</script>
+</head>
+<body>
+	<div class="goods">
+		<!-- <img src="" class="img">
+		<h1 class="title"></h1>
+		<p class="old-price"></p>
+		<p class="price"></p>
+		<p class="color"></p> -->
+	</div>
+	
+</body>
+</html>

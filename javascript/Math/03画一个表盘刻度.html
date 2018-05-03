@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>画一个表盘刻度</title>
+	<style>
+		.watch{
+			position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);
+			width:300px;height:300px;border:5px solid #58bc58;border-radius:50%;
+		}
+
+		.hour{position: absolute;width:20px;height:20px;background-color: #58bc58;border-radius: 50%;}
+	</style>
+</head>
+<body>
+	<div id="watch" class="watch">
+		<div class="hour"></div>
+		<div class="hour"></div>
+		<div class="hour"></div>
+		<div class="hour"></div>
+		<div class="hour"></div>
+		<div class="hour"></div>
+		<div class="hour"></div>
+		<div class="hour"></div>
+		<div class="hour"></div>
+		<div class="hour"></div>
+		<div class="hour"></div>
+		<div class="hour"></div>
+	</div>
+	<script>
+		(function(){
+			/*
+				获取元素
+					* document.getElementById()
+					* getElementsByClassName()
+			 */
+			
+			var watch = document.getElementById('watch');
+			var hours = watch.getElementsByClassName('hour');//[ele,ele,ele,ele]
+			console.log(hours);
+
+			var x = 150;
+			var y = 150;
+			var r = 150;
+
+
+			for(var i=0;i<hours.length;i++){
+				var deg = 360/hours.length*i;
+
+				var rad = deg*Math.PI/180;
+
+				var a = r*Math.cos(rad);
+				var b = r*Math.sin(rad);
+
+				var left = x + a;
+				var top = y + b;
+
+				console.log(left,top)
+
+				// 设置元素的left,top
+				hours[i].style.left = left-10 + 'px';
+				hours[i].style.top = top-10 + 'px';
+			}
+		})();
+	</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>字符串操作</title>
+	<script>
+		/*
+			字符串操作
+				* 读取	:读取字符串中的某一个字符（通过索引值）
+				* 查找替换
+				* 截取	：获取某段字符
+					* slice(start[,end])		可为负数
+					* substring(start[,end])	
+					* substr(start[,length])	获取从start开，length个字符
+				* 分割
+					* split()：把字符串拆分成数组
+				* 大小写转换
+					* toLowerCase()		把字符串转成小写
+					* toUpperCase()		把字符串转成大写
+		 */
+
+		var str = '我们不一样，有啥不一样';
+
+		str.slice(2,5);//不一样
+
+		var str2 = 'name=laoxie&age=18&gender=male&';
+		var res2 = str2.slice(0,-1);
+
+
+		// 拆分（分割）
+		var str3 = 'name=laoxie&age=18&gender=male';
+		var arr = str3.split('&');
+
+		console.log(arr);
+
+		var username = 'Laoxie';//保存到数据库的是：laoxie
+		if(username.toLowerCase() === 'laoxie'){
+
+		}
+
+	</script>
+</head>
+<body>
+	<h1>字符串操作</h1>
+</body>
+</html>

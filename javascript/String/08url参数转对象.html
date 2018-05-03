@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>08url参数转对象</title>
+	<script>
+		/*
+			08url参数转对象
+		 */
+		var url = 'https://www.baidu.com/s?name=laoxie&age=18&sex=male&';//{name:'laoxie',age:18,sex:'male'}
+
+		
+		// 找出?号所在位置
+		var idx = url.indexOf('?');
+
+		// 截取参数
+		var params = url.slice(idx+1,-1);//name=laoxie&age=18&sex=male
+
+		// String->Array
+		// 拆分字符串
+		params = params.split('&');//['name=laoxie','age=18','sex=male']
+
+		// 创建空对象
+		var person = {};
+
+		params.forEach(function(item){
+			// item:'name=laoxie'
+
+			// 拆分属性名/值
+			var arr = item.split('=');//['name','laoxie']
+
+			person[arr[0]] = arr[1];
+		})
+
+		console.log(person)
+	</script>
+</head>
+<body>
+	<h1>08url参数转对象</h1>
+</body>
+</html>

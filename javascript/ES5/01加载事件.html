@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01加载事件</title>
+	<script>
+		/*
+			ES5加载事件
+				* onreadystatechange
+					* 在document.readyState属性改变时触发
+					* readyState改变2次
+						* interactive
+						* complete
+				* DOMContentLoaded
+					* 必须使用事件监听器绑定
+		 */
+		window.onload = function(){
+			var btn = document.getElementsByTagName('button')[0];
+			console.log('window.onload',btn);
+		}
+
+		// readystatechange
+		document.onreadystatechange = function(){
+			console.log(document.readyState);
+			if(document.readyState === 'interactive'){
+				// console.log('readystatechange')
+				var btn = document.getElementsByTagName('button')[0];
+				console.log('readystatechange',btn);
+			}
+			
+		}
+
+
+		// 事件监听器
+		document.addEventListener('DOMContentLoaded',function(){
+			var btn = document.getElementsByTagName('button')[0];
+				console.log('DOMContentLoade',btn);
+		});
+
+		
+	</script>
+</head>
+<body>
+	<button>按钮</button>
+</body>
+</html>
