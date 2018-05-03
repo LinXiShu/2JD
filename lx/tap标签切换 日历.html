@@ -1,0 +1,127 @@
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <style type="text/css">
+        #tab{width: 100px;height: 100px;position: relative;}
+        #xx{width: 180px;height: 180px; }
+        .dianji{
+            padding: 3px;margin: 2px;
+            width: 55px;height: 55px;background: red;float: left;
+            font-size: 10px;background: black;color: #fff;line-height: 50px;
+            text-align: center; box-sizing: border-box;
+        }
+        #box{
+            width: 200px;height: 100px;background: ;
+            position: relative;
+        }
+        .hezi{
+            width: 180px;height: 100px;background: red;color: #fff;
+            float: left;position: absolute; 
+        }
+            
+        .beidianji{
+            background: #fff;color: red;border: 2px solid red;
+
+        }
+    </style>
+
+</head>
+<body>
+    
+<div class="tab" style="float: left;">
+
+    <div id="xx">
+        <div class=" dianji d1 ">Month</div>
+        <div class=" dianji d2 ">January</div>
+        <div class=" dianji d3 ">February</div>
+        <div class=" dianji d4 ">March</div>
+        <div class=" dianji d5 ">April</div>
+        <div class=" dianji d3 ">May</div>
+        <div class=" dianji d4 ">June </div>
+        <div class=" dianji d5 ">July</div>
+        <div class=" dianji d5 ">August </div>
+    </div>
+
+    <div id="box">
+        <div class=" hezi b1">你是 内猴子请来的救兵吗？</div>
+        <div class=" hezi b2">我叫你一声，你敢答应吗？！</div>
+        <div class=" hezi b3">师傅！师傅~傅~傅~傅~~~。。</div>
+        <div class=" hezi b4">大师兄！师傅被妖怪抓走啦！··</div>
+        <div class=" hezi b5">二师兄，师傅被妖怪抓走啦！！</div>
+        <div class=" hezi b5">你这泼猴！</div>
+        <div class=" hezi b5">你挑着单，我牵着马。。</div>
+        <div class=" hezi b5">迎来日出，送走晚霞。。</div>
+        <div class=" hezi b5">翻过了几座山，又越过了几条河。。</div>
+    </div>
+
+</div>
+
+
+<script type="text/javascript">
+        
+    var dj        =  document.getElementsByClassName('dianji');
+    var hezi  =  document.getElementsByClassName('hezi');
+
+    console.log(dj);
+    console.log(dj);
+
+        for(var i=0;i<dj.length;i++){
+            if(i===0){
+                dj[i].className = 'dianji beidianji';
+            }else{
+                hezi[i].style.display = 'none';
+            };
+
+            (function(i){
+                var timer;
+                dj[i].onclick = function(){
+                    timer = setTimeout(function(){
+                        show(i);
+                    },10)
+                }
+                dj[i].onmouseout = function(){
+                    clearTimeout(timer);
+                }   
+
+            })(i)
+
+            function show(idx){
+
+                for(var j=0;j<dj.length;j++){
+                    if(j===idx){
+                        dj[j].className = 'dianji beidianji';
+                        hezi[j].style.display = 'block';
+                    }else{
+                        dj[j].className = 'dianji';
+                        hezi[j].style.display = 'none';
+                    };
+                }
+
+
+            }
+
+
+        }
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

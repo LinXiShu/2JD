@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>动态生成</title>
+
+
+    <style type="text/css">
+        table{border:1px solid #666;border-collapse: collapse;}
+        td,th{border:1px solid #666;padding:5px 10px;}
+        .aa{border:1px solid #666;padding:5px 10px; display: block;}
+        .even{background-color: #ffc;}
+    </style>
+</head>
+<body>
+    <h1>动态生成表格</h1>
+    <label for="row"></label>
+    <input type="text" name="row" id="row" />
+    <label for="col"></label>
+    <input type="text" name="col" id="col" />
+    <button class="btn">生成表格</button>
+
+    <!-- 东西 输入 -->
+    <div class="output" >
+        <tr class="aa"><td><input type="checkbox" id="all" />全选</td><td><input type="checkbox" id="fx" />反选</td></tr>
+    </div>
+
+<script type="text/javascript">
+    var row = document.getElementById('row');
+    var col = document.getElementById('col');
+    var btn = document.getElementsByClassName('btn')[0];
+    var output = document.getElementsByClassName('output')[0]
+
+
+    btn.onclick = function(){
+        var _row = row.value*1;
+        var _col = col.value*1;
+
+        var table  = document.createElement('table');
+        var tbody  = document.createElement('tbody');
+        var thead  = document.createElement('thead');
+        var o      = document.getElementsByClassName('che');
+
+        // console.log(cbox);
+
+        for(var i=0; i<_row;i++){
+            var tr = document.createElement('tr');
+
+
+            tr.className = 'che';
+
+            if(i%2 === 0){
+                tr.className = 'even che';
+            };
+        
+            for(var j=0; j<_col;j++){
+                var td = document.createElement('td');
+                    
+                    td.innerHTML = '单元格';
+
+                tr.appendChild(td);  
+                
+                if(j == 0){
+                    td.innerHTML = '<input type="checkbox" class="cbox">';
+                }
+            };
+
+            tbody.appendChild(tr);
+        }
+        table.appendChild(thead);
+        table.appendChild(tbody);
+        output.appendChild(table);
+
+
+
+        setTimeout(function(){
+            var cbox = document.getElementsByClassName('cbox');
+            var all = document.getElementById('all');
+            var fx  = document.getElementById('fx');
+            console.log(cbox);
+            // 全选
+            all.onclick = function(){
+                for(var i=0;i<cbox.length;i++){
+                    cbox[i].checked = all.checked;
+                    // console.log(12);
+                }
+            };
+
+            // 不选
+            fx.onclick = function(){
+                for(var i=0;i<cbox.length;i++){
+                    cbox[i].checked = !cbox[i].checked;
+                    // all.checked = isCheckAll();
+                }
+            }
+
+
+            // 给每个 复选框绑定事件
+            for(var i=0;i<cbox.length;i++){
+                cbox[i].onclick = function(){
+                    all.checked = isCheckAll();
+                }
+            }
+
+
+            // 这个 函数 循环所有 复选框 返回 一个 布尔值
+            function isCheckAll(){
+                var res = true;
+                
+                for(var i=0;i<cbox.length;i++){
+                    if(!cbox[i].checked){
+                        res = false;
+                        break;
+                    }
+                }
+                return res;
+            }
+
+        }, 100)
+    }
+
+</script>
+</body>
+</html>

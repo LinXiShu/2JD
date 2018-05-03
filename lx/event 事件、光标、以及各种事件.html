@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>事件</title>
+
+    <style type="text/css">
+        body{padding-top:1500px;}
+        .box{position:fixed;left:0;top:0;padding:10px;font-size:12px;color:#999;width: 500px;height: 500px;}
+        #box_s{display:none; width:300px; height:80px; background: #aaf;position: absolute;}
+    </style>
+</head>
+<body>
+    
+    <div class="box">
+        
+        <div id="box_s">123</div>
+    </div>
+                                    
+
+    <script type="text/javascript">
+
+    // 浏览器 坐标
+    // clientX 、clientY 
+
+    // 电脑屏幕 坐标
+    // screenX 、screenY
+
+    // 浏览器 文本坐标  （包括滚动过的距离）
+    // pageX   、pageY
+
+    // 光标滚动过的距离
+    // scrollX 、scrollY
+    
+    // 光标相对于事件源对象的相对偏移量
+    // offsetX 、offsetY
+
+
+    var box = document.getElementsByClassName('box')[0];
+
+    // document.onclick = function(e){
+    //     e = e || window.event;
+
+    //     if(e.pageX === undefined){
+    //         e.pageX = e.clientX + window.scrollX;
+    //     };
+    //     if(e.pageY === undefined){
+    //         e.pageY = e.clientY +window.scrollY;
+    //     };  
+
+
+    //     box.innerHTML = '<p>client:'+e.clientX+','+e.clientY+'</p>'+
+    //                             '<p>screen:'+e.screenX+','+e.screenY+'</p>'+
+    //                             '<p>page:'+e.pageX+','+e.pageY+'</p>'+
+    //                             '<p>scrollX'+window.scrollY+'</p>'+
+    //                             '<p>offsetY'+ e.offsetY +'</p>'
+
+    // };
+
+// 检测 鼠标 按键 判断
+    // box.onmousedown = function(event){
+    //     console.log(event);
+
+    //     switch(event.button){
+    //         case 0:
+    //             box.innerText = '左';
+    //             break;
+    //         case 1:
+    //             box.innerText = '中';
+    //             break;
+    //         case 2:
+    //             box.innerText = '右';
+    //             break;
+    //     }
+    // }
+
+    var box_s = document.getElementById('box_s');
+
+    // box.onmouseover = function(){
+    //     box_s.style.display = 'block';
+
+    // };
+
+    // box.onmouseout  = function(event){
+    //     box_s.style.display = 'none';
+
+    // };
+
+    // box.onmousemove = function(e){
+    //     box_s.style.left   =  e.pageX  + 'px';
+    //     box_s.style.top    =  e.pageY  + 'px';
+    // }
+
+    </script>
+</body>
+</html>

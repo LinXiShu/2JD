@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>对象</title>
+</head>
+<body>
+    
+    <script type="text/javascript">
+
+
+
+// --------------------------------------
+
+    var linxishu = {
+        name: 'linxishu',
+        age: 19,
+        gender: 'nam',
+        aihao : 'linjieying',
+    }
+    // 构造函数 创建对象 
+    var linxishu2 = new Object();
+    linxishu2['name']   = 'linxishu';
+    linxishu2['age']    = 19;
+    linxishu2['gender'] = 'nam';
+
+    console.log(linxishu2);
+    console.log(linxishu);
+
+// 对象的 操作
+   // 增 删 改 查
+    var person = {
+        name     : '关羽',
+        nickname : '关二哥',
+        gender   : '男',
+        age      : 36,
+    };
+    // 添加 属性 的 方法；点语法 .
+    person.aihao = '貂蝉';
+    // 读取
+    console.log(person.name);
+
+    // 对象 的 遍历 for .. in
+    // 使用 for..in 
+
+    var keys = [];
+    var keyx = [];
+    
+    // 这个 循环 是 把属性名循环出来
+    // 然后 对象【属性名】，就是属性值  
+    
+    for(var key in linxishu){
+        keys.push(key);
+        keyx.push(linxishu[key]);
+    }
+    console.log(keys);
+    console.log(keyx);
+
+    // 循环 json数组
+    var jsonArray = [{"name": "linxishu","age": 18},{"name": "linjieying","age": 17}]
+    
+    console.log(jsonArray);
+
+    for(var i=0; i<jsonArray.length;i++){
+        var jsonObj = jsonArray[i];
+        for(var key in jsonObj){
+            console.log(key);
+            console.log(jsonObj[key]);
+            
+        }
+    }
+
+// 查找 字符串 第一次 出现 和 最后出现 的 位置
+    //  indexOf / lastIndexOf("", idx);
+
+//  裁剪 字符串 
+//  stringObject.substring(start,stop)
+
+
+    var ObjArr = "qweq wqeqq sq a qwe  q w";
+
+    console.log(ObjArr.lastIndexOf("a", 0),123);
+
+    console.log(jsonArray.substring(0, 1));
+
+    
+
+    </script>
+</body>
+</html>

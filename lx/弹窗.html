@@ -1,0 +1,135 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>弹窗</title>
+
+    <style type="text/css">
+        
+        *{padding: 0; margin: 0;}
+
+
+        #tC{width: 500px;height: 500px; background: #d0d0d0; position: fixed; 
+            margin: 0 auto;  display: none;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <span>尊敬的 &nbsp;&nbsp;<span id="username" style="color: blue;"></span>&nbsp;&nbsp;是男人，就请  <a style=" color: red;">登录</a></span>
+    
+    <div id = "tC"><br /><br /><br /><br /><br />
+
+        <div>
+        <center>
+       用户名： <input type="text"  class="inds"/><br />
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; <span class="spans_s">请输入 您的 用户名！</span><br />
+       密  &nbsp;&nbsp;&nbsp;码：<input type="password" class="inds"/><br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="spans_s">请输入 您的 密码！</span><br />
+        <button class="btn">登录</button>
+        </center>
+        </div>
+    </div>
+
+<!-- -........................................................ -->
+
+    <script type="text/javascript">
+
+        var span     =  document.getElementsByTagName('span')[0];
+        var dl       =  document.getElementsByTagName('a')[0];
+        var tC       =  document.getElementById('tC');
+        var usernames =  document.getElementById('username');
+        var spans    =  document.getElementsByClassName('spans_s');
+        var btn      =  document.getElementsByClassName('btn')[0];
+        var inds     =  document.getElementsByClassName('inds');
+
+        var pushs = [];
+        var pushx ;
+
+        window.onresize = function(){
+            autoCenter();
+        }
+        
+        tC.onmousedown = function(e){
+            var ox = e.clientX - tC.offsetLeft;
+            var oy = e.clientY - tC.offsetTop;
+
+            document.onmousemove = function(evt){
+                tC.style.left = evt.clientX - ox + 'px';
+                tC.style.top = evt.clientY - oy + 'px';
+                evt.preventDefault();
+            }
+            // e.preventDefault();
+        }
+
+        document.onmouseup = function(){
+            document.onmousemove = null;
+        }
+
+        xSYC();
+        function xSYC(){
+            dl.onclick = function(){
+                tC.style.display =  'block';
+                autoCenter();
+
+                denLu();
+           // setTimeout(function(){
+             console.log(tC.offsetWidth, tC.offsetHeight);
+            // }, 1000)
+            }
+        };
+
+        function autoCenter(){
+                tC.style.left = (window.innerWidth/2-tC.offsetWidth/2) + 'px';
+                tC.style.top = (window.innerHeight/2-tC.offsetHeight/2) + 'px';
+                console.log(tC.offsetWidth, tC.offsetHeight);
+            };
+
+// ---------------------------------------------------
+
+        function denLu(){
+            console.log(spans[0])
+                spans[0].onblur = function(){
+                    let username = inds[0].value;
+                    console.log(123)
+                    if(!/^[a-z][a-z0-9\-]{5,19}$/.test(username)){
+                        console.log(321);
+                        spans[0].innerText    = '用户名必须字母开头！！';
+                        spans[0].style.color  = 'red';
+                        return false;
+                    };
+                }
+            };
+
+            // btn.onclick = function(){
+            //     let password = inds[1].value;
+            //     var zT = true;
+            //     if(!/^[^\s]{6,20}$/.test(password)){
+            //         return false;
+            //     }
+            //     // if(){
+            //     //     // let push_two = {"username":username, "password":password};
+            //     //     // usernames.innerText = username;
+            //     //     // pushs.push(push_two);
+            //     //     // tC.style.display =  'none';
+            //     // }{
+            //     // }
+            // }
+        // }
+
+
+
+    </script>
+
+</body>
+</html>
+
+
+
+

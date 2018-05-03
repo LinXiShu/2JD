@@ -1,0 +1,106 @@
+<!DOCTYPE html>  
+<html>  
+    <head>  
+        <meta charset="UTF-8">  
+        <title></title>  
+        <style type="text/css">  
+            #box{position: absolute;top: 150px;left: 250px;width: 200px;height: 200px;background-color: red;}  
+        </style>  
+    </head>  
+    <body>  
+        <div id="box"></div>  
+    </body>  
+
+    <script type="text/javascript">  
+            var box=document.getElementById('box');  
+
+            var b='';  //声明两个空变量a，b；  
+            var a='';  
+
+            box.onmousedown=function(ev){
+
+                var iEvent=ev||event;  
+
+                var dx = 0;
+                var dy = 0;
+                    console.log(dx);
+                    console.log(dy);
+                 dx = iEvent.clientX;
+                 dy = iEvent.clientY;
+
+                var dw=box.offsetWidth;//存储默认的div的宽度。  
+                var dh=box.offsetHeight;//存储默认的div的高度。 
+
+                var disright  =  box.offsetLeft+box.offsetWidth;
+                var distop    =  box.offsetHeight+box.offsetTop;
+
+                if(iEvent.clientX>box.offsetLeft+box.offsetWidth-10){
+                    b= 'right';  
+                    console.log(1);
+                }
+
+                if(iEvent.clientX<box.offsetLeft+10){
+                    b=  'left';  
+                    console.log(2);
+                }
+
+                if(iEvent.clientY<box.offsetTop+10){  
+                    a=   'top';  
+                    console.log(3);
+                }
+                
+                if(iEvent.clientY>box.offsetTop+box.offsetHeight-10){  
+                    a='bottom';  
+                    console.log(4);
+                }
+
+                document.onmousemove=function(ev){
+                    var iEvent=ev||event;  
+
+                    if(b=='right'){
+                        box.style.width=dw+(iEvent.clientX-dx)+'px';  
+                
+                        if(box.offsetWidth<=10){
+            
+                            box.style.width='10px';  
+                        }
+                    };
+                    if(b=='left'){
+                        box.style.width=dw-(iEvent.clientX-dx)+'px';
+
+                        box.style.left=disright-box.offsetWidth+'px';
+ 
+                        if(box.offsetWidth<=10){
+                            box.style.width='10px';  
+                            box.style.left=disright-box.offsetWidth+'px';
+                        }  
+                    };
+                    if(a=='bottom'){  
+                        box.style.height=iEvent.clientY-dy+dh+'px'; 
+
+                        if(box.offsetHeight<=10){  
+                            box.style.height='10px';  
+                        }
+                    };
+                    if(a=='top'){
+                        box.style.height=dh-(iEvent.clientY-dy)+'px'  
+                        box.style.top=distop-box.offsetHeight+'px';  
+
+
+                        if(box.offsetHeight<=10){  
+                            box.style.height='10px';  
+                            box.style.top=distop-box.offsetHeight+'px';  
+                        }
+                    };
+                };  
+
+                document.onmouseup = function(){
+                    document.onmousedown=null;  
+                    document.onmousemove=null;
+                };  
+
+                return false;  
+            };  
+
+    </script>  
+</html>  

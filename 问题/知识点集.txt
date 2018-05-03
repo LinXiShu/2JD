@@ -1,0 +1,21 @@
+
+
+事件冒泡：
+
+在一个对象上触发某类事件（如onclick事件），那么click事件就会沿着DOM树向这个对象的父级传播，从里到外，直至它被处理程序处理，或者事件到达了最顶层（document/window）
+
+
+阻止浏览器默认行为：
+
+
+鼠标拖拽思路：
+鼠标 移入 显示 拖拽 ，不断改变 定位 left、top:
+box.style.left = e.pageX - 30 + 'px';
+box.style.top = e.pageY + 30 + 'px';
+
+注：每个事件触发 都会 在 事件处理函数 自带 一个 event
+里面包含了很多信息
+注：解决 兼容 问题 e = e || window.e;
+
+注：
+cookie path=/ 把cookie保存在上层目录当中。

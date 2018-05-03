@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>shuzhu</title>
+</head>
+<body>
+
+
+
+    <script type="text/javascript">
+
+// 注： 参数就是 局部变量
+// 
+
+
+
+
+// ----------------------------------
+
+// 封装 方法 for 循环 去重
+var arr = [10,11,10,2,2,10,2,10,5,6,9];
+quchong(arr);
+function  quchong(arr){
+      var newArr = [];
+
+      for(var i=0;i<arr.length;i++){
+        for(var j=0;j<newArr.length;j++){
+
+            if(arr[i] === newArr[j] ){
+               break;
+            }
+
+        }
+
+        if(j === newArr.length){
+            newArr.push(arr[i])
+        }
+
+      }
+
+      // console.log(newArr);
+}
+
+// ---------------------------------------------------------
+//  简单 点名 系统。
+// var namelist = ["刘盛伟", "李志乾", "陈观斌", "章松辉", "柯礼钦", "范方政", "黄世棠", "李孟辉", "廖振兴", "黄银英", "陈超俊", "陈东林", "蒋广胜", "戴志远", "袁道钦", "蒋争兴", "林金杏", "李志杰", "谭志坚", "叶靖", "杨靖", "黄烨江", "陈淼生", "潘董柏", "梁海宽", "卢国金", "郑金秋", "梁嘉健", "唐光源", "顾兴胜", "钟邦令", "吴春霞", "黄涌镇", "颜乙峰", "卢建均", "黄飞恒", "王晨曦", "杨祖来", "易秀玲", "潘培基", "黄开展", "温婷婷", "胡歆国", "曾一帆", "陈甜", "谭宏钊", "张忠", "杨俊琦", "林颂明", "纪传斌", "杨镇钟", "孙晨", "罗术坤", "司徒建鸿", "卓焕杰", "余鹏城", "梁嘉健", "吴志鹏", "郑奋超", "林洁盈", "周高锋", "罗清", "吴光远", "杨有国", "赵剑锋"];
+
+    // 随机数
+
+    // var idx = parseInt(Math.random()*namelist.length);
+
+    // // console.log(idx);
+
+    // // 随机数的 种类
+    // // Math.random() // 随机生成 0-1 的 随机小数。
+    // function getName(){
+    //     var idx = parseInt(Math.random()*100);
+        
+    //     return namelist[idx];
+    // }
+
+    // btn.onclick = function (){
+ 
+    //     getName(){}
+    // }
+
+
+//     //下取整
+//         console.log(Math.floor(6.12313245));
+
+//     // 上取整
+//         console.log(Math.round(6.12313245));
+    
+// ----------------------------------------------------------- 
+    
+// 给 数组 的 每个 元素 增加 150%,
+    var arr = [10,15,12,31,52.5,85.1,35.10,35,52];
+
+    function map(arr){
+        var newArr = [];
+
+        for(var i=0;i<arr.length;i++){
+           var num =  parseInt(arr[i]*1.5);
+           newArr.push(num);
+        }
+        return newArr;
+    }
+
+    console.log(map(arr));
+
+// 把 数组 所有 内容 放入 字符串；
+    console.log(arr.join());
+
+// 冒泡排序，  从小到大
+// 把 杂乱的 数组 从小到大排序
+    
+    for(var j=0;j<arr.length-1;j++){
+        for(var i=0;i<arr.length-j-1;i++){
+            if(arr[i] > arr[i+1]){
+                var temp = arr[i];
+                arr[i] = arr[i];
+                arr[i+1] = temp;
+            }
+        }
+    }
+     console.log(arr.join());
+
+//   从大到小
+     console.log(arr.reverse());
+
+//   选择排序,   从小到大
+    for(var i=0;i<arr.length;i++){
+        for(var j=i+1;j<arr.length;j++){
+            if(arr[i] > arr[j]){
+                var temp = arr[i];
+                arr[i]   = arr[j];
+                arr[j]   = temp;
+            }
+        }
+    }
+        console.log(arr);
+
+// sort(  fn(){} )  这是什么排序方法？？
+
+
+var newArr = [];//在堆内存中创建一个空数组
+// 用 for 循环 newArr.push();  复制成功！
+
+// 思考 ，深复制 和 浅复制。
+
+// 未完待续 ...
+
+    </script>
+</body>
+</html>
+
+
+
+

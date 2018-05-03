@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>图片旋转</title>
+</head>
+<body>
+<center>
+    <div class="box">
+        <img src="../img/0.jpg" height="378" width="640" alt="" />
+    </div>
+</center>
+
+
+    <script type="text/javascript">
+
+    var imgs  = document.getElementsByTagName('img')[0];
+
+
+    console.log(imgs);
+    var a = 1;
+
+    function jian(){
+        a--;
+        if(a<=0){
+             a = 72;
+        }
+        imgs.src = '../img/'+ a +'.jpg';
+
+    };
+
+      function  jia(){
+        a++;
+        if(a>72){
+             a = 0;
+        }
+        imgs.src = '../img/'+ a +'.jpg';
+
+    };
+    
+    var jias     = setInterval(jia , 40);
+
+    var jians    = setInterval(jian, 40)
+     clearInterval(jians);
+
+    var keys = 37;
+
+        document.onkeydown = function(e){
+            event.preventDefault();
+            e       =  e || window.event;
+            var key =  e.keyCode || e.which;
+
+            if(key == 39){
+                clearInterval(jias);
+                clearInterval(jians);
+                jians = setInterval(jian, 40);
+                keys = 39;
+            }
+            if(key == 37){
+                clearInterval(jias);
+                clearInterval(jians);
+                jias = setInterval(jia, 40)
+                keys = 37;
+            }
+            console.log(keys);
+            
+        }
+
+    imgs.onmouseover = function(){
+        event.preventDefault();
+        if(keys === 37){
+            clearInterval(jias);
+            clearInterval(jians);
+            imgs.onmouseout = function(){
+            jias = setInterval(jia, 40);
+            // console.log(keys);
+            
+            // a
+            }
+        };
+
+        if(keys === 39){
+            clearInterval(jias);
+            clearInterval(jians);
+            imgs.onmouseout = function(){
+            jians = setInterval(jian, 40);
+            // console.log(keys);
+            
+            // a
+        }   
+    };
+
+    var a1 ;
+    var a2 ;
+    var fX ;
+
+    document.onmousedown =  function(e){
+        event.preventDefault();
+
+            a2 = e.offsetX ;
+            console.log(a2)
+
+        console.log(a2);
+
+        if(e.button === 0){
+        event.preventDefault();
+        }
+        var arr = [];
+
+        document.onmousemove = function(e){
+             a1 = e.offsetX  ; 
+             console.log(a1)
+
+        if(a2 >= a1){
+            fX = a++;
+            if(a>72){
+                 a = 0;
+            }
+
+            imgs.src = '../img/'+ a +'.jpg';
+
+        }
+        if(a2<=a1){
+            fX = a--;
+            if(a<=0){
+                 a = 72;
+            }
+            imgs.src = '../img/'+ a +'.jpg';
+        };
+
+    }
+
+
+
+
+    };
+    document.onmouseup = function(){
+
+        document.onmousemove = null;
+        console.log();
+        console.log(a1);
+    };
+// -----------------------------
+};
+
+
+    </script>
+</body>
+</html>
+

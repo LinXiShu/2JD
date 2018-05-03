@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>键盘事件</title>
+
+    <style type="text/css">
+        body{overflow: hidden;}
+        img{position:absolute;left 0px; top: 0px;}
+        
+        .right{transform: rotateY(180deg);}
+        .up   {transform: rotateZ(-45deg) ;}
+        .down {transform: rotateZ(45deg);}
+
+    </style>
+</head>
+<body>
+    
+    <img src="../img/0001.gif" height="80" width="90" alt="" />
+    
+<script type="text/javascript">
+    
+    // 1.onkeydown   键盘按下触发事件
+    // 2.onkeyup     键盘松开触发事件
+    // 3.onkeypress  键盘按下不同键触发事件
+    
+    // 实例愤怒的小鸟
+    var  bird    = document.getElementsByTagName('img')[0];
+
+    console.log(bird);
+
+    var shudu = 10;    
+
+    document.onkeydown = function(e){
+
+        e        = e || window.event;
+        var key  = e.keyCode || e.which;
+
+// ----------------------------------------------------------
+        if(bird.offsetLeft >= innerWidth){
+            bird.style.left = (-100) + 'px';
+        };
+        if(bird.offsetTop >= innerHeight){
+            bird.style.top  = (-100) + 'px';
+        }
+        if(bird.offsetLeft <= -110){
+
+            bird.style.left = innerWidth  + 'px';
+        }
+        if(bird.offsetTop  <= -110){
+            bird.style.top  = innerHeight + 'px';
+        }   
+// ----------------------------------------------------------
+
+        var left = bird.offsetLeft;
+        var top  = bird.offsetTop;
+
+        switch(key){
+            case 37:
+                left -= shudu;
+                bird.setAttribute('src', '../img/0002.gif');
+                bird.className = 'right';
+                break;
+            case 38:
+                bird.setAttribute('src', '../img/0002.gif');
+                bird.className = 'up';
+                top  -= shudu;
+                break;
+            case 39:
+                bird.setAttribute('src', '../img/0002.gif');
+                bird.className = '';
+                left += shudu;
+                break;
+            case 40:
+                top  += shudu;
+                bird.setAttribute('src', '../img/0002.gif');
+                bird.className = 'down';
+                break;
+        }
+
+        bird.style.left = left + 'px';
+        bird.style.top  = top  + 'px';
+
+        console.log(bird.offsetLeft,innerWidth);        
+
+
+    }
+
+
+
+
+    document.onkeyup = function(e){
+        e        = e || window.event;
+        var  key = e.keyCode || e.which;
+
+        bird.setAttribute('src', '../img/0001.gif');
+    } 
+
+</script>
+
+</body>
+</html>

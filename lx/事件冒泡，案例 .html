@@ -1,0 +1,102 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>事件冒泡</title>
+    <style>
+        .datalist{border:1px solid #ddd;border-collapse: collapse;}
+        .datalist td{border:1px solid #ddd;padding:5px 10px;}
+
+        #box{padding:10px;width:300px;border:10px solid #f00;text-align:center;}
+    </style>
+</head>
+<body>
+
+<h1>利用事件委托实现新添加的按钮响应点击事件</h1>
+<table class="datalist">
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>单元格01</td>
+            <td>单元格02</td>
+            <td>单元格03</td>
+            <td>单元格04</td>
+            <td>单元格05</td>
+            <td><button class="copy">复制</button><button class="del">删除</button></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>单元格01</td>
+            <td>单元格02</td>
+            <td>单元格03</td>
+            <td>单元格04</td>
+            <td>单元格05</td>
+            <td><button class="copy">复制</button><button class="del">删除</button></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>单元格01</td>
+            <td>单元格02</td>
+            <td>单元格03</td>
+            <td>单元格04</td>
+            <td>单元格05</td>
+            <td><button class="copy">复制</button><button class="del">删除</button></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>单元格01</td>
+            <td>单元格02</td>
+            <td>单元格03</td>
+            <td>单元格04</td>
+            <td>单元格05</td>
+            <td><button class="copy">复制</button><button class="del">删除</button></td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>单元格01</td>
+            <td>单元格02</td>
+            <td>单元格03</td>
+            <td>单元格04</td>
+            <td>单元格05</td>
+            <td><button class="copy">复制</button><button class="del">删除</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<script type="text/javascript">
+
+var table = document.getElementsByClassName('datalist')[0];
+var tbody = table.children[0];
+var btnCopy = tbody.getElementsByClassName('copy');
+
+table.onclick = function(e){
+    e = e || window.event;
+    var target = e.target || e.srcElement;
+
+    // 复制
+        if(target.className == 'copy'){
+            var currentTr = target.parentNode.parentNode;
+
+            var copyTr    = currentTr.cloneNode(true);
+
+            tbody.appendChild(copyTr); 
+        }
+    //  删除
+        if(target.className == 'del'){
+            var currentTr = target.parentNode.parentNode;
+
+            currentTr.parentNode.removeChild(currentTr);
+
+        }
+        console.log(e.offsetX);
+        // console.log(e.offsetY);
+}
+
+</script>
+
+</body>
+</html>

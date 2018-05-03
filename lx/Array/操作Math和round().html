@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Math</title>
+</head>
+<body>
+    
+    <div class="math">
+        
+    </div>
+
+<script type="text/javascript">
+
+    // Math
+    //     * PI
+    //     * random()
+    //     * 取整
+    //         * round()：五舍五入取整
+    //         * ceil()：向上取整：得到一个比当前数大的最小整数
+    //         * floor()：向下取整：得到一个比当前数小的最大整数（类似于parseInt）
+    //     * 最大最小值
+    //         * max()
+    //         * min()
+    //     * pow(x,y)：x的y次方
+    
+    var box = document.getElementsByClassName('math')[0];
+
+    // 获取范围 随机数。
+    var red  = parseInt(Math.random()*100 + 1000);
+
+    var blue = Math.round(red);
+
+    console.log(blue);
+
+    autoPlay();
+
+    setInterval(autoPlay, 1000);
+
+    function autoPlay(){
+
+    var now   = new Date();          //当前事件；   
+
+    var year  = now.getFullYear();   //2018；
+
+    var month = now.getMonth()+1;    //5；
+
+    var date  = now.getDay();        //日期是从 0 开始 计算的；3；
+
+    var week  = now.getDay();        //星期是从 0 开始 计算的；3；
+  
+    var h     = now.getHours();      //获取 小时
+
+    var m     = now.getMinutes();    //获取 分钟
+
+    var s     = now.getSeconds();    //获取 秒数
+
+    h         = h<10 ?  '0' + h : h; // 补零
+    m         = m<10 ?  '0' + m : m;
+    s         = s<10 ?  '0' + s : s;
+
+    var arr   = '日一二三四五六';
+
+    var Time;
+
+        box.innerHTML = '';
+
+        var Time = year + ' 年' + month + ' 月 &nbsp;' + date + ' 日 &nbsp;' + h + ':' + m + ':' + s + ' &nbsp;星期' + arr[week];
+
+        console.log(Time);
+
+        box.innerHTML = Time;
+
+}
+
+    // now.setDate(now.getDate()+7);  //设置当前时间 + 7天；
+
+    // console.log(now);
+    // console.log(h);
+    // console.log(m);
+    // console.log(s);
+
+    // Time.toUTCString()   转换成 格林威治标准时间 
+    //                         北京 20点 那边大约13点
+    // Time.getTime()       转换成 时间的毫秒数。
+
+
+
+</script>
+
+</body>
+</html>

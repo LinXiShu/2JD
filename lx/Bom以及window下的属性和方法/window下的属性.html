@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>window下的属性</title>
+</head>
+<body>
+    
+
+
+<script type="text/javascript">
+
+// 定义在全局环境下的变量都会成为window对象的属性
+
+// 把变量定义在函数体里，可以有效减少全局环境下的变量冲突，避免污染全局环境
+
+// 在函数内部不用var声明的变量会成为全局变量，即window对象的属性
+
+// window对象可以在代码中省略，如window.alert()可以写成alert();
+
+// 通过var在全局作用域下声明的变量用delete无法删除
+
+// innerWidth   表示浏览器窗口 可视区域 的尺寸
+// innerHeight
+
+// outerWidth      表示 整个 浏览窗口的尺寸
+// outerHeight
+
+// scrollX / scrollY   获取浏览器 窗口 滚动条 滚动过的距离
+// scrollTo(x,y)       设置浏览器滚动距离
+// scrollBy(xnum,ynum) 设置基于当前位置滚动的距离
+
+// alert()  警告弹窗
+
+// onload       浏览器加载完后  时触发
+// onscroll     窗口滚动条滚动  时触发
+// onresize     窗口大小改变    时触发
+
+    var bum ;
+
+    function(){
+        console.log(123);
+    }
+
+    (function(){
+        bum = 66;
+    })();
+
+
+    // console.log(bE);
+    console.log(bum);
+
+</script>
+
+</body>
+</html>

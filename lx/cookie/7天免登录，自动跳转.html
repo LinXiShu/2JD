@@ -1,0 +1,93 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>cookie</title>
+    <style type="text/css">
+        .welcome{display: none;}
+        label{display:inline-block;width: 80px;height: 30px;}
+        #btnLogin{width: 60px;height: 30px;border-radius: 10% 10%; }
+    </style>
+    
+</head>
+<body style="background: black; color:#fff;">
+
+<br /><br /><br /><br /><br /><br /><br /><br />
+<center>
+    <h1>贪吃蛇</h1><br />
+        <div class="form" style="display:block;"\>
+            <label for="username">用户名：</label>
+            <input type="text"  id="username" name="username" /><br />
+            <label for="password">密码：</label>
+            <input type="password" id="password" name="password" /><br /><br />
+            <input type="checkbox" id="mdl" value="七天免登录" />七天免登录! 
+            <button id="btnLogin">登录</button>
+        </div>
+
+    <div class="welcome"  style="background: black; color:#fff;">
+        <p>hello, <span id="currentName"></span> 欢迎登录<span class="tC" style="color: red; padding-left: 7px;">退出</span></p>
+    </div>
+</center>
+
+<script type="text/javascript">
+  
+    var form     = document.getElementsByClassName('form')[0];
+    var username = document.getElementById('username');
+    var password = document.getElementById('password');
+    var checkbox = document.getElementById('mdl');
+    var btnLogin = document.getElementById('btnLogin');
+    var welcome = document.getElementsByClassName('welcome')[0];
+    var currentName = document.getElementById('currentName');
+
+    console.log(form, username, password,checkbox,btnLogin) 
+
+    btnLogin.onclick = function(){
+        var _username = username.value;
+        var _password = password.value;
+
+        if(mdl.checked){
+            var now = new Date();
+            now.setDate(now.getDate()+7);
+
+            // var date = now.setDate(now.getDate()+7);
+            
+            document.cookie = 'username=' + _username + ';expires=' + date;
+            document.cookie = 'password=' + _password + ';expires=' + date;
+
+        }
+    };
+
+        // console.log();
+
+        var cookies = document.cookie;
+
+        cookies     = cookies.split('; ');
+
+        cookies.forEach(function(item ){
+
+            var arr = item.split('=');
+
+            if(arr[0] === "username"){
+                autoLogin(arr[1]);
+            }
+
+        });
+
+        function autoLogin(username){
+
+            currentName.innerText = username;
+            
+            welcome.style.display = 'block'; 
+            
+            form.style.display = 'none';
+        }
+
+
+
+</script>
+
+</body>
+</html>

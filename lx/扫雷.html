@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+</head>
+<body>
+    
+<script type="text/javascript">
+    var tagName = 10;
+    var obj = {
+        tagName : 20,
+        show    : function(){
+                    console.log(this, tagName);
+                }
+    }
+
+    var show = obj.show;
+    var res  = show.bind(document.body);
+
+    res()
+
+
+</script>
+
+
+</body>
+</html>

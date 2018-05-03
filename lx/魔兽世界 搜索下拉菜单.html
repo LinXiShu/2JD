@@ -1,0 +1,138 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+
+    <style type="text/css">
+        ul,li{margin: 0;padding:0;}
+        #box{width: 500px;height: 600px;}
+        .box_x{list-style: none;  display: none;}
+        ul{width: 174px;}
+        li{width: 172px; background: #fff;margin-top: 2px;margin-bottom: 2px;line-height: 30px;}
+    </style>
+</head>
+<body>
+
+    <div id="box">
+
+        <div class="box_s">
+            <input type="text" class="txt"/>
+            <input type="button" class="btn" value="按钮" />
+        </div>
+        <ul class="box_x">
+            <li title="魔兽世界">魔兽世界</li>
+            <li title="地下城与勇士">地下城与勇士</li>
+            <li title="梦幻西游">梦幻西游</li>
+            <li title="吃鸡">吃鸡</li>
+        </ul>
+        
+    </div>
+
+
+
+    <script type="text/javascript">
+        var box    = document.getElementById('box');
+        var box_s  = document.getElementsByClassName('box_s');
+        var box_x  = document.getElementsByClassName('box_x');
+
+
+
+        var lis = box_x[0].children;
+        console.log(lis);
+        var txt = box.children[0].children[0];
+        var btn = box.children[0].children[1];
+
+
+
+              
+        txt.onfocus = function(){
+            box_x[0].style.display = 'block';
+
+            if(txt.onfocus){
+                var idx = -1;
+            document.onkeydown = function(e){
+                e       =  e || window.event;
+                var key =  e.keyCode || e.which;
+
+                switch(key){
+                    case 38:
+                        qc();
+                        
+                        if(idx <= 0){
+                            txt.blur();
+                            
+                            return
+                        };
+
+                        if(idx > 0){
+                        idx -= 1;
+                        lis[idx].style.background = '#ccc';
+                        };
+                        
+                        console.log(idx)
+                        
+                        break;
+                    case 40:
+                        qc();
+                       
+                       if(idx >= 3){
+                           txt.blur();
+                           
+                            return
+                           
+                       }
+
+                        if(idx < 3){
+
+                         idx += 1;
+                         lis[idx].style.background = '#ccc';
+
+                        }
+
+                        console.log(idx)
+                        
+                        break;
+                    case 13:
+                        console.log(lis[idx].title);
+                        txt.value = lis[idx].title;
+                        qc();
+                        txt.blur();
+                        txt.onfocus = false;
+                        break;
+                    case 0:
+                        console.log(1);
+
+                }
+                txt.onfocus = false;
+            }
+
+            
+
+          }
+        }
+
+        txt.onblur  = function(){
+
+            box_x[0].style.display = 'none';
+            idx = 0;
+            qc();
+        }
+
+        // 清除 颜色
+        function qc(){
+            for(var i=0;i<lis.length;i++){
+               lis[i].style.background = '';
+            }
+        }
+
+    </script>
+</body>
+</html>
+
+
+
