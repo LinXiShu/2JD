@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+</head>
+<body>
+
+<div class="box">123</div>
+
+<script type="text/javascript">
+        
+    // 常用函数
+    // * parseInt()
+    // * parseFloat()
+
+    var a = document.getElementsByClassName('box')[0];
+
+    a.onclick = function(e){
+
+        console.log(this);
+        console.log(e.target);
+        // 点击事件里 this  指向 事件源对象 
+        //     event.target 指向 事件源对象
+    }
+
+    // parseInt();
+    // parseFloat();
+
+    // typeof()
+        // 是一个判断指定类型的 方法
+        // 返回数据类型
+// ”number”、”string”、”boolean”、”object”、”function” 和 “undefined”
+        
+        function show(b){
+        }
+        var w = true;
+        console.log(typeof(show));
+        // 返回 字符串 function;
+
+        // 可以用于 if 判断
+        if(typeof(show) === "function"){
+            console.log(123);
+        }
+
+        // new 一个实例
+        var c = new Array();
+
+        console.log(c instanceof Array);
+
+        // indexof
+
+</script>
+    
+</body>
+</html>

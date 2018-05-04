@@ -11,10 +11,6 @@
     <script type="text/javascript">
 
 // 注： 参数就是 局部变量
-// 
-
-
-
 
 // ----------------------------------
 
@@ -46,24 +42,24 @@ function  quchong(arr){
 //  简单 点名 系统。
 // var namelist = ["刘盛伟", "李志乾", "陈观斌", "章松辉", "柯礼钦", "范方政", "黄世棠", "李孟辉", "廖振兴", "黄银英", "陈超俊", "陈东林", "蒋广胜", "戴志远", "袁道钦", "蒋争兴", "林金杏", "李志杰", "谭志坚", "叶靖", "杨靖", "黄烨江", "陈淼生", "潘董柏", "梁海宽", "卢国金", "郑金秋", "梁嘉健", "唐光源", "顾兴胜", "钟邦令", "吴春霞", "黄涌镇", "颜乙峰", "卢建均", "黄飞恒", "王晨曦", "杨祖来", "易秀玲", "潘培基", "黄开展", "温婷婷", "胡歆国", "曾一帆", "陈甜", "谭宏钊", "张忠", "杨俊琦", "林颂明", "纪传斌", "杨镇钟", "孙晨", "罗术坤", "司徒建鸿", "卓焕杰", "余鹏城", "梁嘉健", "吴志鹏", "郑奋超", "林洁盈", "周高锋", "罗清", "吴光远", "杨有国", "赵剑锋"];
 
-    // 随机数
+//     随机数
 
-    // var idx = parseInt(Math.random()*namelist.length);
+//     var idx = parseInt(Math.random()*namelist.length);
 
-    // // console.log(idx);
+//     // console.log(idx);
 
-    // // 随机数的 种类
-    // // Math.random() // 随机生成 0-1 的 随机小数。
-    // function getName(){
-    //     var idx = parseInt(Math.random()*100);
+//     // 随机数的 种类
+//     // Math.random() // 随机生成 0-1 的 随机小数。
+//     function getName(){
+//         var idx = parseInt(Math.random()*100);
         
-    //     return namelist[idx];
-    // }
+//         return namelist[idx];
+//     }
 
-    // btn.onclick = function (){
+//     btn.onclick = function (){
  
-    //     getName(){}
-    // }
+//         getName(){}
+//     }
 
 
 //     //下取整
@@ -130,7 +126,6 @@ var newArr = [];//在堆内存中创建一个空数组
 // 思考 ，深复制 和 浅复制。
 
 // 未完待续 ...
-
     // 数组方法：：
     var arrays = [0,1,2,3,4,5,6,7,14,123,13,53];
 
@@ -155,25 +150,44 @@ var newArr = [];//在堆内存中创建一个空数组
     // slice(start[,end])：返回数组的片段或子数组，从start开始到end(不包括end所对应的元素)
     //     如果省略end参数，则截取到数组的最后一项
     //     支持负数
-        arrays.slice(0, 4);
+    
+        // arrays.slice(1, 4);
 
     // sort：将数组中的元素排序，并返回排序后的数组
     //     默认以字符串的排列方式（转换成ASCII码进行对比）
+        // arrays.sort();
 
     // reverse：将数组中的元素颠倒顺序，返回逆序后的数组
+    // 不转换成 ascii码
+        // arrays.reverse();
 
     // join(separator) 返回字符串值，其中包含了连接到一起的数组的所有元素
     //     separator为分隔符，默认为逗号
 
+
     // concat() 返回一个新数组，这个新数组是由调用这个方法的数组和参数组成
     //     参数可以是多个
 
-        console.log(arrays);
+        // console.log(arrays.slice(1, 4), 123);
+    
+    // parseInt()
+   // var arrayss =  parseFloat(Math.random()*1 + 100);
+        // console.log(arrayss);
+
+
+    // (123456.123123).toFixed(3)
+    //  返回 一个 保留 3 位小数的 数 ;
+
+    for(var i=1;i<=3;i++){
+        setTimeout(function(){
+            console.log(i);
+        },10);
+    };
+
+    // 输出 3 个 4;
 
     </script>
 </body>
 </html>
-
-
 
 
