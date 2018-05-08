@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>
+
+    </title>
+
+    <style type="text/css">
+        
+        ul,li{list-style: none;}
+
+        li{width:190px; height:250px; float: left;border: 1px solid black;position: relative;background: skyblue;}
+    
+        .A{width:100%; height:50px; position: absolute;bottom: 0;background: black; opacity: 0.5;}
+
+
+    </style>
+</head>
+<body>
+    
+<br /><br /><br /><br /><br /><br /><br /><br />
+    <div class="box">
+        <li><a href="#" id="" class="A">1</a></li>
+        <li><a href="#" id="" class="A">2</a></li>
+        <li><a href="#" id="" class="A">3</a></li>
+        <li><a href="#" id="" class="A">4</a></li>
+        <li><a href="#" id="" class="A">5</a></li>
+    </div>
+
+
+    <script type="text/javascript">
+
+    var li = document.getElementsByTagName('li');
+    var a  = document.getElementsByTagName('a') ;
+
+    console.log(li);
+
+    // // getComputedStyle  获取 css 样式 里的 值
+    // console.log(getComputedStyle(a[0],null).height);
+
+    // var he = getComputedStyle(a[0],null).height;
+
+    // // 50px
+    // he = he.replace('px', '');
+    // // 50  => str
+    // var hes = parseInt(he);   //parseFloat(he)
+    // // 50  => 数字
+    // console.log(he);
+
+    // he.replace(unit, '');
+
+for(var i=0;i<a.length;i++){
+
+        a[i].onmouseover = function(e){
+
+            var get = e.target;
+
+            var he  = getComputedStyle(e.target, null).height
+
+            he = parseInt(he);
+
+            console.log('初始高度：',he);
+
+        var a = setInterval(function(){
+            // console.log(get.offsetTop)
+
+            
+            he += 20;
+
+            if(he <= 250){
+                get.setAttribute('style', 'height:'+ he +'px;');
+
+                console.log(he);
+
+                if(he >= 250){
+                    clearInterval(a);
+
+                }
+            }
+
+        }, 30);
+
+        e.target.onmouseout  = function(e){
+            document.onmouseover = null;
+            clearInterval(a);
+
+           var b = setInterval(function(){
+
+                he -= 20;
+
+                if(he >= 50){
+                    get.setAttribute('style', 'height:'+ he +'px;');
+
+                    if(he <= 50){
+                        clearInterval(b);
+
+                    }
+                }
+
+            }, 30)
+
+
+        };
+    };
+
+
+}
+
+
+
+    </script>
+</body>
+</html>

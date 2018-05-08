@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>xuanz</title>
+
+
+    <style type="text/css">
+        
+        body{ overflow: hidden;}
+        .box{background: ;width: 300px;height: 300px;position: absolute;top:0;
+            right: 0; left: 0; bottom: 0;margin: auto auto; border-radius: 50% 50%;
+            border: 2px solid black;   
+            
+        }
+        .F1{width: 230px;height: 230px; border-radius: 50% 50%;border: 2px solid black;
+            position: absolute;top:0;
+            right: 0; left: 0; bottom: 0;margin: auto auto;
+        }
+        .F2{width: 160px;height: 160px;border-radius: 50% 50%;;border: 2px solid black;position: absolute;top:0;
+            right: 0; left: 0; bottom: 0;margin: auto auto;}
+        
+        .diqiu{
+            width: 40px; height: 40px; background: skyblue; border-radius: 50% 50%;position: absolute; left: 58px;box-shadow: 0 0 10px 5px skyblue;
+        }
+
+        .HX{width: 20px;height: 20px;background: red; border-radius: 50% 50%; position: absolute; left: 154px;box-shadow: 0 0 10px 5px red;}
+    
+        .JX{width: 19px; height: 19px; background: orange;border-radius: 50% 50%; position: absolute; left: 110px;box-shadow: 0 0 10px 5px orange;}
+
+        .TY{width: 60px;height: 60px;background: orange; position: absolute;top:0;
+            right: 0; left: 0; bottom: 0;margin: auto auto;border-radius: 50% 50%; box-shadow: 0 0 20px 10px orange;}
+    </style>
+</head>
+<body >
+
+    <div class="box">
+        <div class="diqiu"></div>
+        <div class=" F1">
+            <div class="HX"></div>
+            <div class="F2">
+                <div class="JX">
+                    
+                    
+                </div>
+                    <div class="TY"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+<script type="text/javascript">
+    
+    var box   = document.getElementsByClassName('box')[0];
+    var F1    = document.getElementsByClassName('F1' )[0];
+    var F2    = document.getElementsByClassName('F2' )[0];
+
+    var speek = 10;
+
+    setInterval(function(){
+
+        speek++
+
+        box.setAttribute('style', "transform:rotate("+(10 + speek )+"deg)");
+
+         F1.setAttribute('style', "transform:rotate("+(10 + speek )+"deg)");
+
+         F2.setAttribute('style', "transform:rotate("+(10 + speek )+"deg)");
+
+        // console.log(123);
+    }, 20);
+
+</script>
+
+
+</body>
+</html>

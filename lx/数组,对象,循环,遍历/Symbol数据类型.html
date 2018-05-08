@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Symbol数组类型</title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+//  symbol
+//  给对象创建私有属性
+//  symbol 的出现 解决了 对象 属性 命名 冲突
+
+    // var s1 = Symbol('foo');
+    // var s2 = Symbol('foo');
+    // console.log(s1);
+
+// 1.
+//     var mySymbol = Symbol();
+//         var a = {};
+//         a[mySymbol] = 'Nani';
+// 2.
+       var mySymbol = Symbol();
+       var a = {
+        [mySymbol] : 'Nani'
+
+       }
+        
+       console.log(a[mySymbol]);
+
+       
+
+</script>
+</body>
+</html>

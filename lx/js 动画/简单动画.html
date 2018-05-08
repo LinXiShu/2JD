@@ -1,0 +1,47 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01飞翔的小鸟（匀速运动）</title>
+    <style>
+        body{overflow: hidden;}
+        .bird{position: absolute;left:0;top:0;}
+    }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded',()=>{
+
+            let bird = document.querySelector('.bird');
+
+            // 运动速度
+            let speed = 10;
+            
+            let timer = setInterval(()=>{
+                // 获取当前left
+                let left = bird.offsetLeft;
+
+
+                if(left >= window.outerWidth + bird.offsetWidth){
+                    // clearInterval(timer);
+                    
+                    left =  -100;
+                }
+
+                bird.style.left = left + speed + 'px';
+
+                console.log(left);
+
+            },30);
+
+        })
+
+    </script>
+</head>
+<body>
+    <img src="img/bird.gif" class="bird">
+</body>
+</html>
+
