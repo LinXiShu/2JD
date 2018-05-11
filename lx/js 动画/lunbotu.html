@@ -1,0 +1,275 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>轮播图</title>
+
+    <style type="text/css">
+    
+    ul,li{list-style: none;margin:0;padding:0;}
+
+    .box{width: 700px;height: 400px;border:1px solid black;overflow: hidden;position: relative;margin: 0 auto;}
+
+    .ul{width:3500px;height:400px; position: absolute;left: 0px; }
+    
+    .li{width:700px;height:400px;float: left; }
+    
+
+    .xli{width: 30px;height: 30px; border-radius: 50% 50% ;background: #fff;float: left;margin-left: 8px;text-align: center;}
+    
+    .xbox{width: 200px; height: 40px;position: absolute; right: 0;bottom: 0;z-index: 10000;line-height: 30px;}
+    
+    .a{width: 50px; height: 54px;background:url('../../img2/next.png')no-repeat; position: absolute; z-index: 1000; right: 0; top: 180px; }
+
+    .b{width: 50px; height: 54px;background:url('../../img2/prev.png')no-repeat; position: absolute; z-index: 1000;left: 0; top: 180px; }
+    
+    </style>
+
+</head>
+<body>
+    <br /><br /><br />
+    <div class="box" style=" ">
+        
+        <div id="" class="a aaa" style="display: none;"></div>
+        <div id="" class="b aaa" style="display: none;"></div>
+
+      <div class="xbox">
+            <div id="" class="xli">1</div>
+            <div id="" class="xli">2</div>
+            <div id="" class="xli">3</div>
+            <div id="" class="xli">4</div>
+            <div id="" class="xli">5</div>
+        </div>
+
+        <ul class="ul" style="">
+            <li id="lis" class="li" style="background: url('../../img2/a1.png')no-repeat;background-size: 100% 100%;"> 1</li>
+            <li id="lis" class="li" style="background: url('../../img2/a2.png')no-repeat;background-size: 100% 100%;"> 2</li>
+            <li id="lis" class="li" style="background: url('../../img2/a3.png')no-repeat;background-size: 100% 100%;"> 3</li>
+            <li id="lis" class="li" style="background: url('../../img2/a4.png')no-repeat;background-size: 100% 100%;"> 4</li>
+            <li id="lis" class="li" style="background: url('../../img2/a6.png')no-repeat;background-size: 100% 100%;"> 5</li>
+        </ul>
+
+    </div>
+
+    <script type="text/javascript" src="../../../kj/javascript/common.js"></script>
+    <script type="text/javascript">
+
+        var box  = document.getElementsByClassName('box')[0];
+        var ul   = document.getElementsByClassName('ul')[0] ;
+        var xli  = document.getElementsByClassName('xli');
+        var xbox = document.getElementsByClassName('xbox')[0];
+        var as    = document.getElementsByClassName('a')[0];
+        var bs    = document.getElementsByClassName('b')[0];
+
+        var speed =  0;
+        var dJ    = '';
+        // 创建变量保存 高亮;
+        var gL = 0;
+
+
+        function show(){
+            
+            speed -= 700
+
+            if(speed <= -3500){
+                speed = 0;
+            }
+            animate(ul, {left: speed});
+
+         }
+
+       var time = setInterval(function(){
+            // forGaoLian();
+            gL++;
+            if(gL >= 5){
+                gL = 0;
+            }
+
+            forGaoLian();
+            console.log(gL);
+            setGaoLian();
+            show();
+
+     }, 2000);
+
+       var aa;
+
+        // 鼠标移入
+           box.onmouseover = function(){
+               clearInterval(time);
+               clearInterval(aa);   
+               
+               as.style.display = 'block';
+               bs.style.display = 'block';
+
+               as.onclick = function(){
+
+                    // if(speed >= -3500){
+                    //     speed = -3500;
+                    // }
+
+                    if(speed > -2799){
+                        speed -= 700;
+                        animate(ul, {left: speed});
+                        
+                         // console.log(speed);
+                         gaoLian()
+                    }else{
+                        speed = 0;
+                        animate(ul, {left: speed});
+                        gaoLian();
+                    }
+  
+               };
+               bs.onclick = function(){
+
+                    // if(speed >= 0){
+                    //     speed = 0;
+                    // }
+
+                    if(speed < -1){
+                        speed += 700;
+                        animate(ul, {left: speed});
+                        
+                        // console.log(speed);
+                        
+                        gaoLian()
+                        // console.log(1);
+                    }else{
+                        speed = -2800;
+                        animate(ul, {left: speed});
+                        gaoLian();
+                    }
+ 
+
+               };
+
+                // 鼠标移出 
+                   box.onmouseout  = function(){
+                       
+                         aa = setInterval(function(){
+                             gL++;
+                             if(gL >= 5){
+                                 gL = 0;
+                             }
+
+                             forGaoLian();
+                             console.log(gL);
+                             setGaoLian();
+                             show();
+
+
+                      }, 2000);
+
+                         as.style.display = 'none';
+                         bs.style.display = 'none';
+                   }
+           }
+
+
+
+           // 判断高亮 
+           function gaoLian(){
+                
+                if(speed === 0){
+                    forGaoLian();
+
+                    gL = 0;
+                    setGaoLian();
+
+                }else if(speed === -700){
+                    forGaoLian();
+                    gL = 1;
+                    setGaoLian();
+
+                }else if(speed === -1400){
+                    forGaoLian();
+                    gL = 2;
+                    setGaoLian();
+
+                }else if(speed === -2100){
+                    forGaoLian();
+                    gL = 3;
+                    setGaoLian();
+
+                }else if(speed === -2800){
+                    forGaoLian();
+                    gL = 4;
+                    setGaoLian();
+
+                }
+
+           }
+            
+           // 默 认 高亮
+           xli[0].setAttribute('style', 'background: skyblue');
+
+           // 设置高亮
+           function setGaoLian(){
+                xli[gL].setAttribute('style', 'background: skyblue');
+           }
+           // for 循环 清除 全部高亮
+           function forGaoLian(){
+                for(var i=0;i<xli.length;i++){
+
+                    (function(m){
+
+                         xli[m].setAttribute('style', 'background: #fff');
+                    })(i)
+                }
+           }
+
+        for(var i=0;i < xli.length;i++){
+
+                xli[i].onclick = function(){
+
+                    n = parseInt(this.innerText);
+                    // console.log(123)
+                        switch(n){
+                                case 1:
+
+                                    speed = 0;
+                                    animate(ul, {left: speed});
+                                    gaoLian();
+
+                                    break;
+                                case 2:
+
+                                    speed = -700;
+                                    animate(ul, {left: speed});
+                                    gaoLian();
+
+                                    break;
+                                case 3:
+
+                                    speed = -1400;
+                                    animate(ul, {left: speed});
+                                    gaoLian();
+
+                                    break;
+                                case 4:
+
+                                    speed = -2100;
+                                    animate(ul, {left: speed});
+                                    gaoLian();
+
+                                    break;
+                                case 5:
+
+                                    speed = -2800;
+                                    animate(ul, {left: speed});
+                                    gaoLian();
+
+                            };    
+                        } 
+
+    }
+
+    </script>
+        
+    
+</body>
+</html>

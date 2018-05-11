@@ -1,6 +1,20 @@
 
-
 什么是 深复制？什么是 浅复制？
 
 什么是 事件冒泡， 事件冒泡的作用。
 
+-----------------------------------------
+for(var i=0;i < = xli.length;i++){
+xli[i].onclick = function(){
+
+报错：
+Uncaught TypeError: Cannot set property 'onclick' of undefined
+onclick 无法设置 undefined 的属性。
+原因：
+数组 xli 里有 undefined ，应该设置数组
+
+注  ：获取 target 的 属性名
+e.target.tagName.toLowerCase() === 'a'
+
+设置字体大小：
+e.target.style.fontWeight = 'bold';

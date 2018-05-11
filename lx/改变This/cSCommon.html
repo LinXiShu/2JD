@@ -2,38 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>html</title>
+    <title>轮播图</title>
+
+    <style type="text/css">
+    
+    ul,li{list-style: none;margin:0;padding:0;}
+
+    .box{width: 700px;height: 400px;border:1px solid black;overflow: hidden;position: relative;}
+
+    .ul{width:3500px;height:400px; position: absolute;left: 0px;}
+    
+    .li{width:700px;height:400px;float: left;}
+
+
+    </style>
+  
 </head>
 <body>
+
+    <div class="box">
+        <ul class="ul">
+            <li id="" class="li" style="background: skyblue;"> 1</li>
+            <li id="" class="li" style="background: #FFD700;"> 2</li>
+            <li id="" class="li" style="background: #C0FF3E;"> 3</li>
+            <li id="" class="li" style="background: #BA55D3;"> 4</li>
+            <li id="" class="li" style="background: #A21F25;"> 5</li>
+        </ul>
+    </div>
     
-<ul>
-    <li id="" class=""></li>
-    <li id="" class=""></li>
-    <li id="" class=""></li>
-    <li id="" class=""></li>
-    <li id="" class=""></li>
-</ul>
-<li></li>
-<a href="">
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-</a>
-<script src="../common.js"></script>
+    <script type="text/javascript" src="../common.js" ></script>
+    <script type="text/javascript">
 
-<script type="text/javascript">
+    var ul = document.getElementsByClassName('ul')[0];
+      
     
-   console.log(randomNumber( 10, 50) )
 
-   var body = document.getElementsByTagName('body')[0];
-   var li   = document.getElementsByTagName('li');
-console.log(body);
-
-   body.setAttribute('style', 'background:'+ randomRgb() + ';')
+    </script>
     
-    console.log(Element.get(li));
-
-</script>
 </body>
 </html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>11百度新闻导航动画效果</title>
+    <style>
+        ul{list-style: none;padding:0;margin:0;}
+        .nav{position: relative;height: 40px;width: 1000px;line-height:40px;background-color: #01204f;font-size:14px; margin: 0 auto; }
+        .nav ul{position:relative;z-index:1;overflow: hidden;}
+        .nav li{float:left;}
+        .nav li a{display:block;padding:0 15px;color:#fff;text-decoration: none;}
+        .nav li.active a{background-color: #c00;}
+        .nav .current{position: absolute;left:0;top:0;bottom:0;width:50px;background-color: #c00;}
+
+        .box{width: 1000px; height: 0;background: #01204f;}
+    </style>
+    <script src="../../lx/common.js"></script>
+    <script>
+
+        document.addEventListener('DOMContentLoaded',function(){
+
+            let nav     = document.querySelector('.nav');
+            
+            let current = nav.querySelector('.current');
+
+            let box     = document.querySelector('.box')[0];
+
+            nav.onmouseover = function(e){
+
+                if(e.target.tagName.toLowerCase() === 'a'){
+
+                    let left = e.target.offsetLeft;
+
+                    animate(current,{left:left,width: e.target.offsetWidth,fontSize:20},function(){
+
+                    });
+
+                }
+            }
+        
+
+        })
+    </script>
+</head>
+<body>
+    <div class="nav">
+
+        <ul>
+            <li class="active"><a href="#">首页</a></li>
+            <li><a href="#">百家号</a></li>
+            <li><a href="#">国内</a></li>
+            <li><a href="#">国际</a></li>
+            <li><a href="#">军事</a></li>
+            <li><a href="#">财经</a></li>
+            <li><a href="#">娱乐</a></li>
+            <li><a href="#">体育</a></li>
+            <li><a href="#">互联网</a></li>
+            <li><a href="#">科技</a></li>
+            <li><a href="#">游戏</a></li>
+            <li><a href="#">女人</a></li>
+            <li><a href="#">汽车</a></li>
+        </ul>
+        <div class="current"></div>
+        <div class="box">
+            
+        </div>
+    </div>
+</body>
+</html>

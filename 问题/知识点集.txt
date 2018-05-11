@@ -19,3 +19,7 @@ box.style.top = e.pageY + 30 + 'px';
 
 注：
 cookie path=/ 把cookie保存在上层目录当中。
+
+php解析器： 解析php语法
+apache服务器：路由（识别请求）
+mysql：  数据库

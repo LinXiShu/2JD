@@ -1,0 +1,110 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>商品列表</title>
+    <style>
+        ul{list-style: none;padding:0;margin:0;}
+        .container{width:984px;margin:0 auto;}
+        .goodslist img{width:200px;}
+        .goodslist ul{overflow: hidden;}
+        .goodslist li{float:left;padding-right:15px;margin:15px 15px;border-right:1px dotted #ccc;}
+        .price span{color:#f00;}
+        .price span::before{
+            content:'￥';
+        }
+
+        .page{padding:10px 0;}
+        .page ul{overflow: hidden;text-align:right;}
+        .page li{display:inline-block;margin:5px;width:30px;height:30px;line-height:30px;text-align:center;background-color: #cfcfcf;font-size:12px;}
+        .page li.active{background-color: #f90;color:#fff;}
+
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h1>商品列表</h1>
+        <div class="goodslist"></div>
+        <div class="page"></div>
+    </div>
+
+<script src="./js/one.js">
+
+    // let goodslist = document.querySelector('.goodslist');
+
+    // let page      = document.querySelector('.page');
+
+    // let qty       = 16;
+
+    // let xhr       = new XMLHttpRequest();
+
+    // xhr.onreadystatechange = () =>{
+    //     // console.log(xhr.readyState);
+    //     if(xhr.readyState === 4){
+    //         let data = JSON.parse(xhr.responseText);
+            
+    //         console.log(data);
+            
+    //         let ul = document.createElement('ul');
+
+    //         ul.innerHTML = data.data.map(item=>{
+    //             return `
+    //                 <li data-guid="${item.id}">
+    //                     <img src="${item.imgurl}" />
+    //                     <h4>${item.name}</h4>
+    //                     <p class="price">价格：<span>${item.price}</span></p>
+    //                     <p class="color">颜色：<span>${item.color}</span></p>
+    //                 </li>
+    //             `
+    //         }).join('\n');
+
+    //         // 把 ul写入页面
+    //         goodslist.innerText = '';
+    //         goodslist.appendChild(ul);
+
+    //         // 创建分页
+    //         let page_item = document.createElement('ul');
+
+    //         let page_num = Math.ceil(data.total/data.qty);
+        
+    //         let content = '';
+
+    //         for(let i=1;i<=page_num;i++){
+    //             if(i === data.page){
+    //                 content += `<li class="active">${i}</li>`;
+    //             }else{
+    //                 content += `<li>${i}</li>`;
+    //             }
+    //         }
+    //         page_item.innerHTML = content;
+    //         page.innerText = '';
+    //         page.appendChild(page_item);
+    //     }
+
+    // };
+
+    // xhr.open('get', "../api/one.php?qty=" + qty, true);
+
+    // xhr.send();
+
+    // page.onclick = e =>{
+
+    //     if(e.target.tagName.toLowerCase() === 'li'){
+
+    //         xhr.open('get', "../api/one.php?page=" + e.target.innerText + '&qty=' + qty, true);
+
+    //         xhr.send();
+
+    //     }
+
+    // }
+
+
+
+</script>
+</body>
+</html>
